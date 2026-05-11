@@ -1,8 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Solutions from "@/components/Solutions";
 import About from "@/components/About";
-import Process from "@/components/Process";
-import Architecture from "@/components/Architecture";
 
 export default function Home() {
   return (
@@ -10,9 +9,8 @@ export default function Home() {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <Solutions />
         <About />
-        <Process />
-        <Architecture />
       </main>
     </div>
   );
