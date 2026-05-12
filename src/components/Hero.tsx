@@ -44,7 +44,7 @@ export default function Hero() {
             
             {/* High-Performance SVG Tech Portal Base */}
             <div 
-              className="absolute top-1/2 left-1/2 w-[650px] h-[650px] pointer-events-none mt-40 will-change-transform"
+              className="absolute top-1/2 left-1/2 w-[350px] h-[350px] md:w-[650px] md:h-[650px] lg:w-[850px] lg:h-[850px] pointer-events-none mt-20 md:mt-40 will-change-transform"
               style={{ transform: 'translate(-50%, -50%) rotateX(75deg)', contain: 'strict' }}
             >
               {/* Glowing Aura on the "floor" - Optimized with radial gradient */}
@@ -89,7 +89,7 @@ export default function Hero() {
 
               {/* Core Light Generator */}
               <div 
-                className="absolute top-1/2 left-1/2 w-[200px] h-[200px] rounded-full opacity-50" 
+                className="absolute top-1/2 left-1/2 w-[120px] h-[120px] md:w-[200px] md:h-[200px] rounded-full opacity-50" 
                 style={{ 
                   transform: 'translate(-50%, -50%) translateZ(10px)',
                   background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 75%)'
@@ -107,7 +107,7 @@ export default function Hero() {
             </div>
 
             {/* The Main Logo (Floating Cinematically in the center) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] animate-float-cinematic z-20 will-change-transform" style={{ transformStyle: 'preserve-3d' }}>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] md:w-[380px] md:h-[380px] lg:w-[500px] lg:h-[500px] animate-float-cinematic z-20 will-change-transform" style={{ transformStyle: 'preserve-3d' }}>
               {/* Radial Base Glow */}
               <div 
                 className="absolute inset-0 rounded-full scale-75 animate-pulse-glow"
