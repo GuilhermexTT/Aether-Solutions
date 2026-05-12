@@ -42,26 +42,54 @@ export default function Hero() {
           
           <div className="relative z-10 w-full aspect-square flex items-center justify-center">
             
-            {/* The Tech Portal Base (Horizontal Layered Rings replacing the Disc) */}
+            {/* High-Performance SVG Tech Portal Base */}
             <div 
-              className="absolute top-1/2 left-1/2 w-[650px] h-[650px] pointer-events-none mt-40"
-              style={{ transform: 'translate(-50%, -50%) rotateX(75deg)' }}
+              className="absolute top-1/2 left-1/2 w-[650px] h-[650px] pointer-events-none mt-40 will-change-transform"
+              style={{ transform: 'translate(-50%, -50%) rotateX(75deg)', contain: 'strict' }}
             >
-              {/* Glowing Aura on the "floor" - Optimization: Removed blur filter, using native gradient instead */}
-              <div className="absolute inset-0 gravitational-field rounded-full opacity-80 will-change-transform" style={{ transform: 'translateZ(0)' }}></div>
+              {/* Glowing Aura on the "floor" - Optimized with radial gradient */}
+              <div className="absolute inset-0 gravitational-field rounded-full opacity-80" style={{ transform: 'translateZ(0)' }}></div>
               
-              {/* Layer 1: Outer Base */}
-              <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] tech-ring-base tech-ring-1" style={{ transform: 'translate(-50%, -50%) translateZ(0px)' }}></div>
-              
-              {/* Layer 2: Middle Data Stream */}
-              <div className="absolute top-1/2 left-1/2 w-[480px] h-[480px] tech-ring-base tech-ring-2" style={{ transform: 'translate(-50%, -50%) translateZ(20px)' }}></div>
-              
-              {/* Layer 3: Inner Core Ring */}
-              <div className="absolute top-1/2 left-1/2 w-[350px] h-[350px] tech-ring-base tech-ring-3" style={{ transform: 'translate(-50%, -50%) translateZ(40px)' }}></div>
-              
-              {/* Core Light Generator - Optimization: Using gradient instead of blur filter */}
+              <svg viewBox="0 0 650 650" className="w-full h-full overflow-visible" shapeRendering="geometricPrecision">
+                {/* Outer Ring (Dashed) */}
+                <circle 
+                  cx="325" cy="325" r="300" 
+                  fill="none" 
+                  stroke="rgba(0, 242, 255, 0.5)" 
+                  strokeWidth="4" 
+                  strokeDasharray="20 15"
+                  className="animate-spin-slow origin-center"
+                  style={{ transformBox: 'fill-box' }}
+                />
+                
+                {/* Middle Ring (Dotted) */}
+                <circle 
+                  cx="325" cy="325" r="240" 
+                  fill="none" 
+                  stroke="rgba(0, 130, 255, 0.8)" 
+                  strokeWidth="2" 
+                  strokeDasharray="1 15"
+                  strokeLinecap="round"
+                  className="animate-spin-reverse-slow origin-center"
+                  style={{ transformBox: 'fill-box' }}
+                />
+                
+                {/* Inner Ring (Triple Layered for detail) */}
+                <circle cx="325" cy="325" r="175" fill="none" stroke="rgba(0, 242, 255, 0.2)" strokeWidth="1" />
+                <circle 
+                  cx="325" cy="325" r="175" 
+                  fill="none" 
+                  stroke="rgba(0, 242, 255, 0.9)" 
+                  strokeWidth="2" 
+                  strokeDasharray="80 300"
+                  className="animate-spin-fast origin-center"
+                  style={{ transformBox: 'fill-box' }}
+                />
+              </svg>
+
+              {/* Core Light Generator */}
               <div 
-                className="absolute top-1/2 left-1/2 w-[200px] h-[200px] rounded-full opacity-50 will-change-transform" 
+                className="absolute top-1/2 left-1/2 w-[200px] h-[200px] rounded-full opacity-50" 
                 style={{ 
                   transform: 'translate(-50%, -50%) translateZ(10px)',
                   background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 75%)'

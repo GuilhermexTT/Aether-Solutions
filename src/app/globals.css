@@ -95,14 +95,26 @@ body {
   background: radial-gradient(ellipse at center, rgba(0, 242, 255, 0.4) 0%, rgba(0, 100, 255, 0.15) 30%, rgba(0, 80, 200, 0.05) 50%, transparent 80%);
 }
 
-@keyframes spin-ring {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes spin-ring-simple {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes spin-ring-reverse {
-  from { transform: translate(-50%, -50%) rotate(360deg); }
-  to { transform: translate(-50%, -50%) rotate(0deg); }
+@keyframes spin-ring-simple-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-ring-simple 30s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-ring-simple-reverse 20s linear infinite;
+}
+
+.animate-spin-fast {
+  animation: spin-ring-simple 15s linear infinite;
 }
 
 .tech-ring-base {
@@ -115,22 +127,7 @@ body {
   perspective: 1000px;
 }
 
-.tech-ring-1 {
-  border: 4px dashed rgba(0, 242, 255, 0.5);
-  animation: spin-ring 30s linear infinite;
-}
 
-.tech-ring-2 {
-  border: 2px dotted rgba(0, 130, 255, 0.8);
-  animation: spin-ring-reverse 20s linear infinite;
-}
-
-.tech-ring-3 {
-  border: 1px solid rgba(0, 242, 255, 0.2);
-  border-left: 2px solid rgba(0, 242, 255, 0.9);
-  border-right: 2px solid rgba(0, 242, 255, 0.9);
-  animation: spin-ring 15s linear infinite;
-}
 
 @keyframes spark-rise {
   0% {
