@@ -2,7 +2,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-height-[90vh] flex items-center px-8 pt-32 pb-20 overflow-hidden will-change-transform" style={{ transform: 'translateZ(0)' }}>
+    <section 
+      className="relative min-height-[90vh] flex items-center px-8 pt-32 pb-20 overflow-hidden will-change-transform" 
+      style={{ transform: 'translateZ(0)', contain: 'paint' }}
+    >
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div className="z-10 flex flex-col gap-8 max-w-2xl">
@@ -44,8 +47,8 @@ export default function Hero() {
               className="absolute top-1/2 left-1/2 w-[650px] h-[650px] pointer-events-none mt-40"
               style={{ transform: 'translate(-50%, -50%) rotateX(75deg)' }}
             >
-              {/* Glowing Aura on the "floor" - Reduced blur for mobile performance */}
-              <div className="absolute inset-0 gravitational-field rounded-full blur-[40px] md:blur-[60px] opacity-80"></div>
+              {/* Glowing Aura on the "floor" - Optimization: Removed blur filter, using native gradient instead */}
+              <div className="absolute inset-0 gravitational-field rounded-full opacity-80 will-change-transform" style={{ transform: 'translateZ(0)' }}></div>
               
               {/* Layer 1: Outer Base */}
               <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] tech-ring-base tech-ring-1" style={{ transform: 'translate(-50%, -50%) translateZ(0px)' }}></div>
@@ -56,8 +59,14 @@ export default function Hero() {
               {/* Layer 3: Inner Core Ring */}
               <div className="absolute top-1/2 left-1/2 w-[350px] h-[350px] tech-ring-base tech-ring-3" style={{ transform: 'translate(-50%, -50%) translateZ(40px)' }}></div>
               
-              {/* Core Light Generator - Optimized blur */}
-              <div className="absolute top-1/2 left-1/2 w-[200px] h-[200px] bg-accent-cyan rounded-full blur-[30px] md:blur-[50px] opacity-50" style={{ transform: 'translate(-50%, -50%) translateZ(10px)' }}></div>
+              {/* Core Light Generator - Optimization: Using gradient instead of blur filter */}
+              <div 
+                className="absolute top-1/2 left-1/2 w-[200px] h-[200px] rounded-full opacity-50 will-change-transform" 
+                style={{ 
+                  transform: 'translate(-50%, -50%) translateZ(10px)',
+                  background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 75%)'
+                }} 
+              ></div>
             </div>
 
             {/* Spark Particles (Data transferring from base to logo as vertical lines) */}
@@ -71,8 +80,11 @@ export default function Hero() {
 
             {/* The Main Logo (Floating Cinematically in the center) */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] animate-float-cinematic z-20 will-change-transform">
-              {/* Efficient Background Glow (Cheaper than drop-shadow on Image) */}
-              <div className="absolute inset-0 bg-accent-cyan/20 blur-[60px] rounded-full scale-75 animate-pulse-glow"></div>
+              {/* Original Background Glow - Optimized: Radial gradient replaces blur filter */}
+              <div 
+                className="absolute inset-0 rounded-full scale-75 animate-pulse-glow"
+                style={{ background: 'radial-gradient(circle, rgba(0, 242, 255, 0.25) 0%, transparent 70%)' }}
+              ></div>
               
               <Image 
                 src="/images/logo-principal.png" 

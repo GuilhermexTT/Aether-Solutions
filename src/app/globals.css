@@ -91,7 +91,8 @@ body {
 }
 
 .gravitational-field {
-  background: radial-gradient(ellipse at center, rgba(0, 242, 255, 0.4) 0%, rgba(0, 100, 255, 0.1) 40%, transparent 70%);
+  /* Adjusted gradient stops to simulate the blur look without using the expensive blur filter */
+  background: radial-gradient(ellipse at center, rgba(0, 242, 255, 0.4) 0%, rgba(0, 100, 255, 0.15) 30%, rgba(0, 80, 200, 0.05) 50%, transparent 80%);
 }
 
 @keyframes spin-ring {
@@ -110,6 +111,8 @@ body {
   /* Using a single subtle shadow instead of double heavy shadows */
   box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
   will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .tech-ring-1 {
@@ -155,7 +158,7 @@ body {
 }
 
 .neon-glow {
-  /* Simplified shadow for the logo image - using box-shadow on a hidden div in Hero.tsx is better, 
-     but for now, we reduce this to a single drop-shadow which is significantly faster than 3. */
+  /* Restoring the original aesthetic: the glow follows the logo shape exactly */
   filter: drop-shadow(0 0 15px rgba(78, 203, 252, 0.5));
+  will-change: filter;
 }
