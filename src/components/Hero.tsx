@@ -50,7 +50,7 @@ export default function Hero() {
               {/* Glowing Aura on the "floor" - Optimized with radial gradient */}
               <div className="absolute inset-0 gravitational-field rounded-full opacity-80" style={{ transform: 'translateZ(0)' }}></div>
               
-              <svg viewBox="0 0 650 650" className="w-full h-full overflow-visible" shapeRendering="geometricPrecision">
+              <svg viewBox="0 0 650 650" className="w-full h-full overflow-visible will-change-transform" shapeRendering="geometricPrecision" style={{ transform: 'translateZ(0)' }}>
                 {/* Outer Ring (Dashed) */}
                 <circle 
                   cx="325" cy="325" r="300" 
@@ -107,19 +107,32 @@ export default function Hero() {
             </div>
 
             {/* The Main Logo (Floating Cinematically in the center) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] animate-float-cinematic z-20 will-change-transform">
-              {/* Original Background Glow - Optimized: Radial gradient replaces blur filter */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] animate-float-cinematic z-20 will-change-transform" style={{ transformStyle: 'preserve-3d' }}>
+              {/* Radial Base Glow */}
               <div 
                 className="absolute inset-0 rounded-full scale-75 animate-pulse-glow"
-                style={{ background: 'radial-gradient(circle, rgba(0, 242, 255, 0.25) 0%, transparent 70%)' }}
+                style={{ background: 'radial-gradient(circle, rgba(0, 242, 255, 0.2) 0%, transparent 70%)', transform: 'translateZ(-1px)' }}
               ></div>
               
+              {/* Dynamic Image Glow (Dual-Layer Trick for high performance) */}
+              <div className="absolute inset-0 scale-100 animate-pulse-glow" style={{ transform: 'translateZ(0px)' }}>
+                <Image 
+                  src="/images/logo-principal.png" 
+                  alt="" 
+                  fill
+                  className="object-contain logo-glow-layer"
+                  priority
+                />
+              </div>
+              
+              {/* Main Sharp Logo */}
               <Image 
                 src="/images/logo-principal.png" 
                 alt="Aether Solutions Logo" 
                 fill
-                className="object-contain brightness-110 neon-glow"
+                className="object-contain brightness-110"
                 priority
+                style={{ transform: 'translateZ(1px)' }}
               />
             </div>
             

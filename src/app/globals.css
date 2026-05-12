@@ -154,8 +154,10 @@ body {
   will-change: transform, opacity;
 }
 
-.neon-glow {
-  /* Restoring the original aesthetic: the glow follows the logo shape exactly */
-  filter: drop-shadow(0 0 15px rgba(78, 203, 252, 0.5));
-  will-change: filter;
+.logo-glow-layer {
+  /* Using a blurred image layer instead of drop-shadow is much faster for mobile browsers */
+  filter: blur(15px) brightness(1.2);
+  opacity: 0.6;
+  will-change: transform, opacity;
+  pointer-events: none;
 }
