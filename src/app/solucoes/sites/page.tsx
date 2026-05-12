@@ -9,7 +9,7 @@ export default function SitesPage() {
       <Navbar />
       <main className="flex-grow">
         {/* Hero Section of the page */}
-        <div className="container mx-auto py-32 px-8">
+        <div className="container mx-auto pt-32 pb-12 px-8">
           <div className="max-w-4xl mx-auto flex flex-col gap-12">
             <div className="flex flex-col gap-6">
               <h1 className="text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
@@ -27,7 +27,7 @@ export default function SitesPage() {
         </div>
 
         {/* Process Section */}
-        <Process />
+        <Process className="!pt-0" />
 
         {/* Design Principles Section */}
         <DesignPrinciples />

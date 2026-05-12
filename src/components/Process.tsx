@@ -3,7 +3,11 @@
 import { FiSearch, FiPenTool, FiCode, FiZap, FiArrowRight, FiMonitor } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
 
-export default function Process() {
+interface ProcessProps {
+  className?: string;
+}
+
+export default function Process({ className }: ProcessProps) {
   const steps = [
     {
       number: "1",
@@ -49,7 +53,7 @@ export default function Process() {
   };
 
   return (
-    <section className="py-20 bg-[#020F22] text-white">
+    <section className={`py-20 bg-[#020F22] text-white ${className || ""}`}>
       <div className="container mx-auto px-4">
         {/* Top Badge */}
         <motion.div 

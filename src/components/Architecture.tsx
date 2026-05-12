@@ -7,7 +7,11 @@ import {
 } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
 
-export default function Architecture() {
+interface ArchitectureProps {
+  className?: string;
+}
+
+export default function Architecture({ className }: ArchitectureProps) {
   const layers = [
     {
       name: "INTERFACE LAYER",
@@ -68,7 +72,7 @@ export default function Architecture() {
   };
 
   return (
-    <section className="py-24 px-8 bg-[#020F22]">
+    <section className={`py-24 px-8 bg-[#020F22] ${className || ""}`}>
       <div className="container mx-auto flex flex-col gap-24">
         
         {/* Architecture Section */}
