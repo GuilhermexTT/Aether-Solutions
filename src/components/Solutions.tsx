@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FiLayout, FiCpu, FiMessageSquare } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Solutions() {
   const solutions = [
@@ -20,7 +20,7 @@ export default function Solutions() {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -30,7 +30,7 @@ export default function Solutions() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 

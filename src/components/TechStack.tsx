@@ -1,7 +1,7 @@
 "use client";
 
 import { FiCode } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function TechStack() {
   const techs = [
@@ -15,7 +15,7 @@ export default function TechStack() {
     { label: "DEPLOY", name: "Vercel", color: "text-white" },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -23,7 +23,7 @@ export default function TechStack() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { 
       opacity: 1, 

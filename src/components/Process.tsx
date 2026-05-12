@@ -1,7 +1,7 @@
 "use client";
 
 import { FiSearch, FiPenTool, FiCode, FiZap, FiArrowRight, FiMonitor } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Process() {
   const steps = [
@@ -31,7 +31,7 @@ export default function Process() {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -39,7 +39,7 @@ export default function Process() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 

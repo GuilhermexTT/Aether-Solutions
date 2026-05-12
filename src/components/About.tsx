@@ -1,7 +1,7 @@
 "use client";
 
 import { FiCpu, FiZap, FiTarget, FiUsers } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function About() {
   const features = [
@@ -27,7 +27,7 @@ export default function About() {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -35,7 +35,7 @@ export default function About() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: 20 },
     visible: { 
       opacity: 1, 

@@ -1,7 +1,7 @@
 "use client";
 
 import { FiArrowRight, FiZap } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function CTA() {
   return (

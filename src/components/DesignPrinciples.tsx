@@ -1,7 +1,7 @@
 "use client";
 
 import { FiEye, FiZap, FiSmartphone, FiSearch, FiDisc } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function DesignPrinciples() {
   const principles = [
@@ -39,7 +39,7 @@ export default function DesignPrinciples() {
     },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -47,7 +47,7 @@ export default function DesignPrinciples() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95, y: 20 },
     visible: { 
       opacity: 1, 

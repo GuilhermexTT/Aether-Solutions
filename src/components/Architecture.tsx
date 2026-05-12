@@ -5,7 +5,7 @@ import {
   FiSettings, FiShield, FiDatabase, FiCloud, 
   FiCode, FiLayers 
 } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Architecture() {
   const layers = [
@@ -50,7 +50,7 @@ export default function Architecture() {
     { label: "DATABASE", name: "PostgreSQL" },
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -58,7 +58,7 @@ export default function Architecture() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: { 
       opacity: 1, 
