@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section className="relative min-height-[90vh] flex items-center px-8 pt-32 pb-20 overflow-hidden">
@@ -29,25 +31,50 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Content - Animation Placeholder */}
+        {/* Right Content - Static Disc with Energy Waves */}
         <div className="relative flex items-center justify-center min-h-[500px]">
-          {/* Logo Placeholder / Animation Area */}
+          
           <div className="relative z-10 w-full aspect-square flex items-center justify-center">
-            {/* The "A" Logo Placeholder */}
-            <div className="w-[300px] h-[300px] relative">
-               <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <path 
-                    d="M50 10 L85 85 L65 85 L50 50 L35 85 L15 85 Z" 
-                    fill="url(#logo-grad)" 
-                    className="animate-float"
-                  />
-                  <defs>
-                    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00f2ff" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#00d1ff" stopOpacity="0.3" />
-                    </linearGradient>
-                  </defs>
-               </svg>
+            
+            {/* The Tech Portal Base (Horizontal Layered Rings replacing the Disc) */}
+            <div 
+              className="absolute top-1/2 left-1/2 w-[650px] h-[650px] pointer-events-none mt-40"
+              style={{ transform: 'translate(-50%, -50%) rotateX(75deg)' }}
+            >
+              {/* Glowing Aura on the "floor" */}
+              <div className="absolute inset-0 gravitational-field rounded-full blur-[60px] opacity-80"></div>
+              
+              {/* Layer 1: Outer Base */}
+              <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] tech-ring-base tech-ring-1" style={{ transform: 'translate(-50%, -50%) translateZ(0px)' }}></div>
+              
+              {/* Layer 2: Middle Data Stream */}
+              <div className="absolute top-1/2 left-1/2 w-[480px] h-[480px] tech-ring-base tech-ring-2" style={{ transform: 'translate(-50%, -50%) translateZ(20px)' }}></div>
+              
+              {/* Layer 3: Inner Core Ring */}
+              <div className="absolute top-1/2 left-1/2 w-[350px] h-[350px] tech-ring-base tech-ring-3" style={{ transform: 'translate(-50%, -50%) translateZ(40px)' }}></div>
+              
+              {/* Core Light Generator */}
+              <div className="absolute top-1/2 left-1/2 w-[200px] h-[200px] bg-accent-cyan rounded-full blur-[50px] opacity-50" style={{ transform: 'translate(-50%, -50%) translateZ(10px)' }}></div>
+            </div>
+
+            {/* Spark Particles (Data transferring from base to logo as vertical lines) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[300px] pointer-events-none z-10">
+              <div className="absolute left-[10%] w-[1px] h-12 spark-particle" style={{ animationDelay: '0s' }}></div>
+              <div className="absolute left-[35%] w-[1px] h-8 spark-particle" style={{ animationDelay: '1.2s' }}></div>
+              <div className="absolute left-[65%] w-[2px] h-16 spark-particle" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute left-[90%] w-[1px] h-10 spark-particle" style={{ animationDelay: '2.5s' }}></div>
+              <div className="absolute left-[50%] w-[1px] h-6 spark-particle" style={{ animationDelay: '3.1s' }}></div>
+            </div>
+
+            {/* The Main Logo (Floating Cinematically in the center) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] animate-float-cinematic z-20">
+              <Image 
+                src="/images/logo-principal.png" 
+                alt="Aether Solutions Logo" 
+                fill
+                className="object-contain brightness-110 neon-glow"
+                priority
+              />
             </div>
             
           </div>
