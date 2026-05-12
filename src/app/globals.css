@@ -52,32 +52,30 @@ body {
   0%, 100% { 
     opacity: 0.5;
     transform: scale(1);
-    filter: blur(40px);
   }
   50% { 
     opacity: 0.8;
     transform: scale(1.1);
-    filter: blur(50px);
   }
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes float-cinematic {
   0%, 100% { 
     transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 20px 30px rgba(0, 242, 255, 0.2));
   }
   50% { 
     transform: translateY(-30px) scale(1.05);
-    filter: drop-shadow(0 40px 50px rgba(0, 242, 255, 0.8));
   }
 }
 
 .animate-float-cinematic {
   animation: float-cinematic 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
 }
 
 @keyframes spin-vinyl {
@@ -88,6 +86,7 @@ body {
 .animate-spin-vinyl {
   animation: spin-vinyl 30s linear infinite;
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .gravitational-field {
@@ -106,8 +105,10 @@ body {
 
 .tech-ring-base {
   border-radius: 50%;
-  border: 2px solid rgba(0, 242, 255, 0.2);
-  box-shadow: 0 0 20px rgba(0, 242, 255, 0.1), inset 0 0 20px rgba(0, 242, 255, 0.1);
+  border: 1px solid rgba(0, 242, 255, 0.15);
+  /* Using a single subtle shadow instead of double heavy shadows */
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+  will-change: transform;
 }
 
 .tech-ring-1 {
@@ -149,10 +150,11 @@ body {
 .spark-particle {
   background: linear-gradient(to top, transparent, rgba(78, 203, 252, 0.4), transparent);
   animation: spark-rise 4s ease-in infinite;
+  will-change: transform, opacity;
 }
 
 .neon-glow {
-  filter: drop-shadow(0 0 8px rgba(78, 203, 252, 0.6)) 
-          drop-shadow(0 0 25px rgba(78, 203, 252, 0.4)) 
-          drop-shadow(0 0 45px rgba(78, 203, 252, 0.2));
+  /* Simplified shadow for the logo image - using box-shadow on a hidden div in Hero.tsx is better, 
+     but for now, we reduce this to a single drop-shadow which is significantly faster than 3. */
+  filter: drop-shadow(0 0 15px rgba(78, 203, 252, 0.5));
 }
