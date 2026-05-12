@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-height-[90vh] flex items-center px-8 pt-32 pb-20 overflow-hidden">
+    <section className="relative min-height-[90vh] flex items-center px-8 pt-32 pb-20 overflow-hidden will-change-transform" style={{ transform: 'translateZ(0)' }}>
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div className="z-10 flex flex-col gap-8 max-w-2xl">
@@ -10,7 +10,10 @@ export default function Hero() {
             <span className="text-accent-cyan">✦</span> IA PARA UM FUTURO INTELIGENTE
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-light leading-tight tracking-tight text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+          <h1 
+            className="text-5xl lg:text-7xl font-light leading-tight tracking-tight text-white"
+            style={{ textShadow: '0 0 15px rgba(255,255,255,0.4)' }}
+          >
             Infraestrutura <br />
             de IA para <br />
             <span className="font-normal">transformar o <br /> mundo.</span>
