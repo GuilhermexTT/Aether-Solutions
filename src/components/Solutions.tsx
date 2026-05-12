@@ -40,7 +40,7 @@ export default function Solutions() {
   };
 
   return (
-    <section className="py-32 px-8 bg-[#020F22]">
+    <section className="py-20 px-8 bg-[#020F22]">
       <div className="container mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

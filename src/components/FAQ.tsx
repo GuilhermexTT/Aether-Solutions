@@ -60,7 +60,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-24 bg-[#020F22] text-white overflow-hidden">
+    <section className="py-16 bg-[#020F22] text-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-4xl">
         
         {/* Top Badge */}

@@ -4,10 +4,10 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-transparent backdrop-blur-md border-b border-[#0363F8]/10 shadow-[0_10px_40px_rgba(3,99,248,0.06)] will-change-transform"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 bg-transparent backdrop-blur-md border-b border-[#0363F8]/10 shadow-[0_10px_40px_rgba(3,99,248,0.06)] will-change-transform"
       style={{ transform: 'translateZ(0)' }}
     >
-      <Link href="/" className="relative h-20 w-64 group">
+      <Link href="/" className="relative h-12 w-40 md:h-20 md:w-64 group">
         <Image 
           src="/logo-marca.png" 
           alt="Aether Solutions Logo" 
