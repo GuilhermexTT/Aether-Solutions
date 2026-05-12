@@ -9,7 +9,7 @@ export default function Navbar() {
     >
       <Link href="/" className="relative h-20 w-64 group">
         <Image 
-          src="/logo.png" 
+          src="/logo-marca.png" 
           alt="Aether Solutions Logo" 
           fill 
           className="object-contain transition-transform duration-300"
