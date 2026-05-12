@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section 
-      className="relative min-height-[90vh] flex items-center px-8 pt-32 pb-20 overflow-hidden will-change-transform" 
+      className="relative min-h-0 md:min-h-[90vh] flex items-center px-8 pt-32 pb-0 md:pb-20 overflow-hidden will-change-transform" 
       style={{ transform: 'translateZ(0)', contain: 'paint' }}
     >
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
         {/* Left Content */}
         <div className="z-10 flex flex-col gap-8 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-white/80 w-fit">
@@ -38,7 +38,7 @@ export default function Hero() {
         </div>
 
         {/* Right Content - Static Disc with Energy Waves */}
-        <div className="relative flex items-center justify-center min-h-[500px]">
+        <div className="relative flex items-center justify-center min-h-[280px] md:min-h-[500px] mt-8 md:mt-0">
           
           <div className="relative z-10 w-full aspect-square flex items-center justify-center">
             
@@ -107,7 +107,7 @@ export default function Hero() {
             </div>
 
             {/* The Main Logo (Floating Cinematically in the center) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] md:w-[380px] md:h-[380px] lg:w-[500px] lg:h-[500px] animate-float-cinematic z-20 will-change-transform" style={{ transformStyle: 'preserve-3d' }}>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[380px] md:h-[380px] lg:w-[500px] lg:h-[500px] animate-float-cinematic z-20 will-change-transform -mt-8 md:mt-0" style={{ transformStyle: 'preserve-3d' }}>
               {/* Radial Base Glow */}
               <div 
                 className="absolute inset-0 rounded-full scale-75 animate-pulse-glow"

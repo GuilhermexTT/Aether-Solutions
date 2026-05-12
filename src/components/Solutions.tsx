@@ -34,7 +34,7 @@ export default function Solutions() {
   ];
 
   return (
-    <section className="py-24 px-8 bg-[#020F22]">
+    <section className="pt-2 pb-24 md:py-24 px-8 bg-[#020F22]">
       <div className="container mx-auto flex flex-col items-center gap-16">
         {/* Header Content */}
         <div className="text-center flex flex-col gap-6 max-w-3xl">
