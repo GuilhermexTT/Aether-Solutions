@@ -1,21 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { FiLayout, FiCpu, FiMessageSquare } from "react-icons/fi";
+import { FiLayout, FiCpu } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
 
 export default function Solutions() {
   const solutions = [
     {
       title: "Agentes de IA",
-      description: "Agentes inteligentes que atendem seus clientes no WhatsApp e sites com linguagem natural.",
+      description: "Atendimento inteligente 24/7 no WhatsApp com processamento em linguagem natural. Nunca mais perca um lead.",
       icon: <FiCpu className="w-8 h-8 text-accent-cyan" />,
+      features: [
+        "Respostas instantâneas e contextuais",
+        "Integração com WhatsApp Business API",
+        "Aprendizado contínuo com seus dados",
+        "Qualificação automática de leads",
+        "Dashboard de analytics em tempo real"
+      ],
       href: "/solucoes/agentes",
     },
     {
       title: "Criação de Sites",
-      description: "Sites ultra-velozes com design futurista e otimização total para conversão.",
+      description: "Sites ultra-velozes com design futurista e otimização total para conversão e performance extrema.",
       icon: <FiLayout className="w-8 h-8 text-accent-cyan" />,
+      features: [
+        "Design futurista e responsivo",
+        "Otimização de SEO (Core Web Vitals)",
+        "Hospedagem de alta disponibilidade",
+        "Segurança avançada com SSL",
+        "Painel de controle administrativo"
+      ],
       href: "/solucoes/sites",
     },
   ];
@@ -61,32 +75,63 @@ export default function Solutions() {
         </motion.div>
 
         <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="flex justify-center mb-6"
+        >
+          <p className="text-white/20 text-[10px] uppercase tracking-[0.2em] font-medium animate-pulse italic">
+            ✦ Clique nos cards para ver detalhes
+          </p>
+        </motion.div>
+
+        <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto"
         >
           {solutions.map((sol, idx) => (
             <motion.div key={idx} variants={itemVariants}>
               <Link 
                 href={sol.href}
-                className="relative p-10 pt-16 rounded-[32px] bg-white/[0.02] backdrop-blur-xl border border-[#084B6E] flex flex-col items-center text-center group hover:bg-white/[0.05] hover:border-[#0363F8]/30 hover:shadow-[0_0_60px_rgba(8,75,110,0.3)] hover:translate-y-3 transition-all duration-500 cursor-pointer shadow-[0_0_20px_rgba(8,75,110,0.1)] h-full"
+                className="relative p-12 pt-32 pb-16 rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-[#084B6E] flex flex-col items-center group hover:bg-white/[0.05] hover:border-[#0363F8]/30 hover:shadow-[0_0_60px_rgba(8,75,110,0.3)] hover:translate-y-3 transition-all duration-500 cursor-pointer shadow-[0_0_20px_rgba(8,75,110,0.1)] h-full"
               >
-                {/* Icon Box - Glued to the top */}
-                <div className="absolute top-0 -translate-y-1/2 p-5 rounded-2xl bg-[#000B1F]/80 backdrop-blur-lg border border-[#084B6E] shadow-[0_0_30px_rgba(8,75,110,0.2)] group-hover:shadow-[0_0_40px_rgba(0,242,255,0.3)] group-hover:border-accent-cyan/40 transition-all duration-500">
+                {/* Icon Box - Flush with the top internal edge */}
+                <div className="absolute top-0 p-6 rounded-b-3xl rounded-t-[40px] bg-[#000B1F]/80 backdrop-blur-lg border border-[#084B6E] shadow-[0_0_30px_rgba(8,75,110,0.2)] group-hover:shadow-[0_0_40px_rgba(0,242,255,0.3)] group-hover:border-accent-cyan/40 transition-all duration-500">
                   {sol.icon}
                 </div>
 
-                <h3 className="text-2xl font-normal text-white mb-6 group-hover:text-accent-cyan transition-colors tracking-tight">
-                  {sol.title}
-                </h3>
-                <p className="text-white/40 text-sm font-light leading-relaxed">
-                  {sol.description}
-                </p>
+                <div className="text-center mb-10">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-wider group-hover:text-accent-cyan transition-colors">
+                    {sol.title}
+                  </h3>
+                  <p className="text-white/50 text-base font-light leading-relaxed max-w-sm mx-auto">
+                    {sol.description}
+                  </p>
+                </div>
+
+                {/* Features List */}
+                <ul className="flex flex-col gap-4 self-start w-full max-w-md mx-auto">
+                  {sol.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex items-center gap-3 text-white/70 text-sm font-light">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,242,255,0.8)]" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
                 
-                <div className="mt-8 flex items-center gap-2 text-accent-cyan text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                  Saber mais <span className="text-lg">→</span>
+                <div className="mt-12 flex items-center gap-2 text-accent-cyan text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-2">
+                  Saber mais 
+                  <motion.span 
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                    className="text-lg"
+                  >
+                    →
+                  </motion.span>
                 </div>
               </Link>
             </motion.div>

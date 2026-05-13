@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Showcase from "@/components/Showcase";
 import Solutions from "@/components/Solutions";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <Showcase />
         <Solutions />
         <About />
         <FAQ />

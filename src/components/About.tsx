@@ -68,7 +68,7 @@ export default function About() {
 
           <div className="flex flex-col gap-6 text-white/50 font-light text-lg leading-relaxed text-justify">
             <p>
-              A <span className="text-white font-normal">Aether Solutions</span> não nasceu apenas para criar sites, mas para construir a infraestrutura onde o futuro dos negócios acontece. O nome "Aether" remete ao que é fundamental e invisível, mas que sustenta tudo ao seu redor. É exatamente assim que enxergamos a tecnologia: uma base invisível, porém poderosa, que impulsiona o crescimento humano e empresarial.
+              A <span className="text-white font-normal">Aether Solutions</span> não nasceu apenas para criar sites, mas para construir a infraestrutura onde o futuro dos negócios acontece. O nome &quot;Aether&quot; remete ao que é fundamental e invisível, mas que sustenta tudo ao seu redor. É exatamente assim que enxergamos a tecnologia: uma base invisível, porém poderosa, que impulsiona o crescimento humano e empresarial.
             </p>
             <p>
               Nossa missão é simples, automatizar o atendimento para que empreendedores possam focar no que realmente importa — crescer seus negócios. Com nossa tecnologia, você nunca mais perde um lead.

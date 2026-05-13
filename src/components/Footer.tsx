@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FiTriangle } from "react-icons/fi";
 
 export default function Footer() {
