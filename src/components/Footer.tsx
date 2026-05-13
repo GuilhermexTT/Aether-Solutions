@@ -1,4 +1,6 @@
 import { FiTriangle } from "react-icons/fi";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,12 +10,13 @@ export default function Footer() {
           {/* Logo Column */}
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-accent-cyan/10 border border-[#084B6E] flex items-center justify-center">
-                <FiTriangle className="text-accent-cyan rotate-180" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white font-bold tracking-widest text-lg leading-tight uppercase">Aether</span>
-                <span className="text-accent-cyan text-[10px] tracking-[0.3em] font-medium uppercase">Solutions</span>
+              <div className="relative h-12 w-40">
+                <Image 
+                  src="/logo-footer.png" 
+                  alt="Aether Solutions Logo" 
+                  fill 
+                  className="object-contain"
+                />
               </div>
             </div>
             <p className="text-white/40 text-sm font-light leading-relaxed max-w-[240px]">
@@ -58,8 +61,8 @@ export default function Footer() {
             © 2026 Aether Solutions. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-8 text-white/20 text-[10px] tracking-wider uppercase font-medium">
-            <span className="hover:text-white transition-colors cursor-pointer">Privacidade</span>
-            <span className="hover:text-white transition-colors cursor-pointer">Termos</span>
+            <Link href="/politica-de-privacidade" className="hover:text-white transition-colors cursor-pointer">Privacidade</Link>
+            <Link href="/termos-de-uso" className="hover:text-white transition-colors cursor-pointer">Termos de Uso</Link>
             <span className="hover:text-white transition-colors cursor-pointer">Cookies</span>
           </div>
         </div>
