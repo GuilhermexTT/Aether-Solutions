@@ -91,39 +91,44 @@ export default function Solutions() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto"
         >
           {solutions.map((sol, idx) => (
             <motion.div key={idx} variants={itemVariants}>
               <Link 
                 href={sol.href}
-                className="relative p-12 pt-32 pb-16 rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-[#084B6E] flex flex-col items-center group hover:bg-white/[0.05] hover:border-[#0363F8]/30 hover:shadow-[0_0_60px_rgba(8,75,110,0.3)] hover:translate-y-3 transition-all duration-500 cursor-pointer shadow-[0_0_20px_rgba(8,75,110,0.1)] h-full"
+                className="relative p-8 md:p-12 pt-20 md:pt-32 pb-10 md:pb-16 rounded-[32px] md:rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-[#084B6E] flex flex-col items-center group hover:bg-white/[0.05] hover:border-[#0363F8]/30 hover:shadow-[0_0_60px_rgba(8,75,110,0.3)] hover:translate-y-3 transition-all duration-500 cursor-pointer shadow-[0_0_20px_rgba(8,75,110,0.1)] h-full"
               >
                 {/* Icon Box - Flush with the top internal edge */}
-                <div className="absolute top-0 p-6 rounded-b-3xl rounded-t-[40px] bg-[#000B1F]/80 backdrop-blur-lg border border-[#084B6E] shadow-[0_0_30px_rgba(8,75,110,0.2)] group-hover:shadow-[0_0_40px_rgba(0,242,255,0.3)] group-hover:border-accent-cyan/40 transition-all duration-500">
+                {/* Shape changed to a 'cube' (uniform square), smaller on mobile */}
+                <div className="absolute top-0 p-4 md:p-6 rounded-b-xl md:rounded-b-2xl rounded-t-[16px] md:rounded-t-[20px] bg-[#000B1F]/80 backdrop-blur-lg 
+                  border-accent-cyan/40 shadow-[0_0_40px_rgba(0,242,255,0.3)]
+                  md:border-[#084B6E] md:shadow-[0_0_30px_rgba(8,75,110,0.2)] 
+                  md:group-hover:shadow-[0_0_40px_rgba(0,242,255,0.3)] md:group-hover:border-accent-cyan/40 
+                  transition-all duration-500">
                   {sol.icon}
                 </div>
 
-                <div className="text-center mb-10">
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase tracking-wider group-hover:text-accent-cyan transition-colors">
+                <div className="text-center mb-6 md:mb-10">
+                  <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 uppercase tracking-wider group-hover:text-accent-cyan transition-colors">
                     {sol.title}
                   </h3>
-                  <p className="text-white/50 text-base font-light leading-relaxed max-w-sm mx-auto">
+                  <p className="text-white/50 text-sm md:text-base font-light leading-relaxed max-w-sm mx-auto">
                     {sol.description}
                   </p>
                 </div>
 
                 {/* Features List */}
-                <ul className="flex flex-col gap-4 self-start w-full max-w-md mx-auto">
+                <ul className="flex flex-col gap-3 md:gap-4 self-start w-full max-w-md mx-auto">
                   {sol.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-center gap-3 text-white/70 text-sm font-light">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,242,255,0.8)]" />
+                    <li key={fIdx} className="flex items-center gap-3 text-white/70 text-xs md:text-sm font-light">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,242,255,0.8)] flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 
-                <div className="mt-12 flex items-center gap-2 text-accent-cyan text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-2">
+                <div className="mt-8 md:mt-12 flex items-center gap-2 text-accent-cyan text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-2">
                   Saber mais 
                   <motion.span 
                     animate={{ x: [0, 5, 0] }}

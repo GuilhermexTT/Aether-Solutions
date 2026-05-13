@@ -14,7 +14,7 @@ export default function TermsOfUse() {
             ← Voltar para Home
           </Link>
           <div className="w-16 h-16 rounded-2xl bg-accent-cyan/10 border border-accent-cyan/30 flex items-center justify-center mb-6">
-            <FiShield className="text-3xl text-accent-cyan shadow-[0_0_15px_rgba(0,242,255,0.4)]" />
+            <FiShield className="text-3xl text-accent-cyan drop-shadow-[0_0_10px_rgba(0,242,255,0.8)]" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4 uppercase">
             Termos de <span className="text-accent-cyan">Uso</span>

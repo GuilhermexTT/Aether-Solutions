@@ -21,10 +21,6 @@ export default function FAQ() {
       answer: "Não. Desenvolvemos sites intuitivos e entregamos tudo configurado. Além disso, oferecemos suporte contínuo para qualquer alteração ou dúvida que você possa ter."
     },
     {
-      question: "O agente de IA pode se integrar com meu CRM?",
-      answer: "Sim! Integramos nossos agentes com as principais ferramentas de CRM do mercado, como HubSpot, Salesforce, RD Station e muitos outros via API, garantindo que nenhum lead seja perdido."
-    },
-    {
       question: "Qual é o investimento necessário?",
       answer: "O investimento varia de acordo com as necessidades específicas de cada projeto. Oferecemos soluções modulares que se adaptam desde pequenos negócios até grandes empresas. Entre em contato para um orçamento personalizado."
     },
