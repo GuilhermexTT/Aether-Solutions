@@ -2,13 +2,15 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight, FiStar, FiLayout } from "react-icons/fi";
 
 const projects = [
   {
     id: 1,
-    title: "Tainá Estética",
+    title: "Dra Thaina Carvalho",
+    slug: "taina-estetica",
     category: "SITE PREMIUM",
     image: "/images/showcase/doutora.png",
     type: "Sites",
@@ -16,58 +18,18 @@ const projects = [
   {
     id: 2,
     title: "AgentBot AI",
-    category: "AGENTE WHATSAPP",
-    image: "/images/showcase/saas.png", // Using saas image for agent placeholder
-    type: "Agentes de IA",
-  },
-  {
-    id: 3,
-    title: "TechFlow Analytics",
-    category: "DASHBOARD SAAS",
-    image: "/images/showcase/real-estate.png", // Using real-estate image for dashboard placeholder
-    type: "Dashboards",
-  },
-  {
-    id: 4,
-    title: "OAK VIZ",
-    category: "LANDING PAGE",
-    image: "/images/showcase/oak.png",
-    type: "Sites",
-  },
-  {
-    id: 5,
-    title: "FitPro Academy",
-    category: "LANDING PAGE",
-    image: "/images/showcase/fitness.png",
-    type: "Sites",
-  },
-  {
-    id: 6,
-    title: "Aether Solutions",
-    category: "SITE CORPORATIVO",
-    image: "/images/showcase/portfolio.png",
-    type: "Sites",
-  },
-  {
-    id: 7,
-    title: "Smart Support",
+    slug: "agentbot-ai",
     category: "AGENTE WHATSAPP",
     image: "/images/showcase/saas.png",
     type: "Agentes de IA",
   },
   {
-    id: 8,
-    title: "Finance Pro",
-    category: "DASHBOARD SAAS",
-    image: "/images/showcase/real-estate.png",
-    type: "Dashboards",
-  },
-  {
-    id: 9,
-    title: "Global Agente",
-    category: "AGENTE WHATSAPP",
-    image: "/images/showcase/fitness.png",
-    type: "Agentes de IA",
+    id: 3,
+    title: "OAK VIZ",
+    slug: "oak-viz",
+    category: "LANDING PAGE",
+    image: "/images/showcase/oak.png",
+    type: "Sites",
   },
 ];
 
@@ -79,7 +41,7 @@ const categories = [
 ];
 
 export default function Showcase() {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Todos");
 
@@ -121,7 +83,7 @@ export default function Showcase() {
   };
 
   return (
-    <section id="portfolio" className="relative py-24 min-h-[900px] overflow-hidden bg-[#000B1F]">
+    <section id="portfolio" className="relative py-24 min-h-[900px] overflow-hidden bg-[#020F22]">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
         style={{ 
@@ -134,10 +96,11 @@ export default function Showcase() {
         <AnimatePresence mode="wait">
           {!showResults ? (
             <motion.div
-              key="carousel"
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0, y: -100 }}
-              transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
+              key="carousel-container"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="w-full flex flex-col items-center"
             >
               {/* Header Section */}
               <div className="flex flex-col items-center text-center mb-16">
@@ -161,78 +124,113 @@ export default function Showcase() {
                 </motion.h2>
               </div>
 
-              {/* Carousel Section */}
-              <div className="relative flex items-center justify-center min-h-[400px] md:min-h-[500px]">
-                {/* Navigation Arrows */}
-                <button 
-                  onClick={prevProject}
-                  className="absolute left-4 md:left-20 z-30 p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan/50 hover:bg-accent-cyan/10 transition-all group shadow-xl"
-                >
-                  <FiChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
-                </button>
+              {/* Mobile Carousel */}
+              <div className="md:hidden relative w-full h-[450px] mb-12 group px-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`mobile-${currentIndex}`}
+                    initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl"
+                  >
+                    <Image
+                      src={projects[currentIndex].image}
+                      alt={projects[currentIndex].title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-8 w-full">
+                      <p className="text-accent-cyan text-[10px] font-bold tracking-widest mb-2 uppercase">
+                        {projects[currentIndex].category}
+                      </p>
+                      <h2 className="text-2xl font-bold text-white mb-6">
+                        {projects[currentIndex].title}
+                      </h2>
+                      <Link
+                        href={`/portfolio/${projects[currentIndex].slug}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#020F22] text-xs font-bold rounded-lg"
+                      >
+                        Ver projeto
+                        <FiLayout />
+                      </Link>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Mobile Arrows */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 pointer-events-none">
+                  <button onClick={prevProject} className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 pointer-events-auto backdrop-blur-md">
+                    <FiChevronLeft size={24} />
+                  </button>
+                  <button onClick={nextProject} className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 pointer-events-auto backdrop-blur-md">
+                    <FiChevronRight size={24} />
+                  </button>
+                </div>
+              </div>
 
-                <button 
-                  onClick={nextProject}
-                  className="absolute right-4 md:right-20 z-30 p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan/50 hover:bg-accent-cyan/10 transition-all group shadow-xl"
-                >
-                  <FiChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+              {/* Desktop Carousel (Stacked) */}
+              <div className="hidden md:flex relative w-full max-w-[1400px] h-[650px] items-center justify-center mb-12 overflow-hidden">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {[-1, 0, 1].map((offset) => {
+                    const index = (currentIndex + offset + projects.length) % projects.length;
+                    const project = projects[index];
+                    const isCenter = offset === 0;
 
-                {/* Cards Container */}
-                <div className="flex items-center justify-center gap-4 md:gap-8 w-full max-w-6xl">
-                  <AnimatePresence mode="popLayout">
-                    {[-1, 0, 1].map((offset) => {
-                      const index = (currentIndex + offset + projects.length) % projects.length;
-                      const project = projects[index];
-                      const isCenter = offset === 0;
+                    return (
+                      <motion.div
+                        key={`${project.id}-${offset}`}
+                        initial={{ opacity: 0, scale: 0.8, x: offset * 300 }}
+                        animate={{ 
+                          opacity: isCenter ? 1 : 0.4, 
+                          scale: isCenter ? 1.1 : 0.85, 
+                          x: offset * 450,
+                          zIndex: isCenter ? 30 : 10,
+                          filter: isCenter ? "blur(0px)" : "blur(4px)"
+                        }}
+                        exit={{ opacity: 0, scale: 0.5, x: offset * 600 }}
+                        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+                        className="absolute w-[600px] h-[400px] rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism"
+                        onClick={() => isCenter ? null : offset > 0 ? nextProject() : prevProject()}
+                      >
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className={`object-cover transition-transform duration-700 ${isCenter ? "group-hover:scale-105" : ""}`}
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent transition-opacity ${isCenter ? "opacity-100" : "opacity-40"}`} />
+                        
+                        {isCenter && (
+                          <div className="absolute inset-0 border-2 border-accent-cyan/30 rounded-[40px] pointer-events-none shadow-[inset_0_0_80px_rgba(0,242,255,0.15)]" />
+                        )}
 
-                      return (
-                        <motion.div
-                          key={`${project.id}-${offset}`}
-                          layout
-                          initial={{ opacity: 0, scale: 0.8, x: offset * 100 }}
-                          animate={{ 
-                            opacity: isCenter ? 1 : 0.4, 
-                            scale: isCenter ? 1.1 : 0.9,
-                            x: 0,
-                            zIndex: isCenter ? 20 : 10,
-                          }}
-                          exit={{ opacity: 0, scale: 0.8, x: -offset * 100 }}
-                          transition={{ duration: 0.5, ease: "easeOut" }}
-                          className={`relative rounded-3xl overflow-hidden cursor-pointer group flex-shrink-0
-                            ${isCenter ? 'w-[320px] h-[220px] md:w-[600px] md:h-[400px]' : 'hidden md:block w-[280px] h-[180px] md:w-[450px] md:h-[300px]'}
-                            border border-white/10 glass-morphism shadow-2xl`}
-                        >
-                          {/* Project Image */}
-                          <Image 
-                            src={project.image} 
-                            alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70"
-                          />
+                        <div className={`absolute bottom-0 left-0 p-12 w-full transition-all duration-500 ${isCenter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                          <p className="text-accent-cyan text-xs font-bold tracking-[0.3em] mb-4 uppercase">{project.category}</p>
+                          <h3 className="text-5xl font-bold text-white mb-8 tracking-tight">{project.title}</h3>
+                          <Link
+                            href={`/portfolio/${project.slug}`}
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#020F22] font-bold rounded-xl hover:bg-accent-cyan transition-colors"
+                          >
+                            Ver projeto completo
+                            <FiLayout />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
 
-                          {/* Overlay & Content */}
-                          <div className={`absolute inset-0 bg-gradient-to-t from-[#000B1F] via-transparent to-transparent flex flex-col justify-end p-6 md:p-10
-                            ${isCenter ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'} transition-opacity duration-300`}>
-                            
-                            {isCenter && (
-                              <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-accent-cyan/20 border border-accent-cyan/40 text-[10px] font-bold text-accent-cyan uppercase">
-                                EM DESTAQUE
-                              </div>
-                            )}
-
-                            <p className="text-accent-cyan text-xs font-bold tracking-widest mb-1 uppercase">{project.category}</p>
-                            <h3 className="text-xl md:text-3xl font-bold text-white drop-shadow-lg">{project.title}</h3>
-                          </div>
-
-                          {/* Cyan Glow for center card */}
-                          {isCenter && (
-                            <div className="absolute inset-0 border-2 border-accent-cyan/30 rounded-3xl pointer-events-none shadow-[inset_0_0_50px_rgba(0,242,255,0.1)]" />
-                          )}
-                        </motion.div>
-                      );
-                    })}
-                  </AnimatePresence>
+                {/* Desktop Navigation Arrows */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-20 pointer-events-none z-50">
+                  <button onClick={prevProject} className="p-6 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 hover:border-accent-cyan transition-all pointer-events-auto backdrop-blur-xl group">
+                    <FiChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
+                  </button>
+                  <button onClick={nextProject} className="p-6 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 hover:border-accent-cyan transition-all pointer-events-auto backdrop-blur-xl group">
+                    <FiChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
               </div>
 
@@ -267,9 +265,9 @@ export default function Showcase() {
           ) : (
             <motion.div
               key="results"
-              initial={{ opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              exit={{ opacity: 0, y: 20 }}
               className="w-full flex flex-col items-center"
             >
               <div className="flex flex-col items-center text-center mb-16">
@@ -299,7 +297,7 @@ export default function Showcase() {
                         : "border-white/5 bg-white/[0.02] text-white/40 hover:border-white/20 hover:text-white"}`}
                   >
                     {cat.name} 
-                    <span className={`px-2 py-0.5 rounded-md text-[10px] ${activeCategory === cat.filter ? "bg-accent-cyan text-[#000B1F]" : "bg-white/10 text-white/40"}`}>
+                    <span className={`px-2 py-0.5 rounded-md text-[10px] ${activeCategory === cat.filter ? "bg-accent-cyan text-[#020F22]" : "bg-white/10 text-white/40"}`}>
                       {getCount(cat.filter)}
                     </span>
                   </button>
@@ -307,36 +305,47 @@ export default function Showcase() {
               </div>
 
               {/* Grid of Results */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-7xl px-4">
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.1 }
+                  }
+                }}
+                initial="hidden"
+                animate="show"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-7xl px-4"
+              >
                 {filteredProjects.map((project) => (
                   <motion.div
                     key={project.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 group cursor-pointer glass-morphism shadow-2xl"
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      show: { opacity: 1, y: 0 }
+                    }}
                   >
-                    <Image 
-                      src={project.image} 
-                      alt={project.title} 
-                      fill 
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" 
-                    />
-                    
-                    {/* Project Info Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#000B1F] via-transparent to-transparent p-10 flex flex-col justify-between">
-                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-[10px] font-bold text-accent-cyan uppercase tracking-tighter w-fit h-fit backdrop-blur-md">
-                        {project.category}
+                    <Link
+                      href={`/portfolio/${project.slug}`}
+                      className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 group cursor-pointer glass-morphism shadow-2xl block"
+                    >
+                      <Image 
+                        src={project.image} 
+                        alt={project.title} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-transparent to-transparent p-10 flex flex-col justify-between">
+                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-[10px] font-bold text-accent-cyan uppercase tracking-tighter w-fit h-fit backdrop-blur-md">
+                          {project.category}
+                        </div>
+                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">{project.title}</h3>
                       </div>
-                      
-                      <h3 className="text-2xl font-bold text-white drop-shadow-lg">{project.title}</h3>
-                    </div>
-
-                    {/* Hover Glow */}
-                    <div className="absolute inset-0 border-2 border-accent-cyan/0 group-hover:border-accent-cyan/20 rounded-[32px] transition-all duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 border-2 border-accent-cyan/0 group-hover:border-accent-cyan/20 rounded-[32px] transition-all duration-500 pointer-events-none" />
+                    </Link>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               {/* Final CTA in Results */}
               <div className="mt-24 flex flex-col items-center text-center">
@@ -345,12 +354,13 @@ export default function Showcase() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={(e) => handleSmoothScroll(e, "/#contato")}
-                  className="px-8 py-4 rounded-2xl bg-[#000B1F] border border-accent-cyan/50 text-white font-bold flex items-center gap-3 shadow-[0_0_30px_rgba(0,242,255,0.1)] hover:shadow-[0_0_40px_rgba(0,242,255,0.2)] transition-all"
+                  className="px-8 py-4 rounded-2xl bg-[#020F22] border border-accent-cyan/50 text-white font-bold flex items-center gap-3 shadow-[0_0_30px_rgba(0,242,255,0.1)] hover:shadow-[0_0_40px_rgba(0,242,255,0.2)] transition-all"
                 >
                   <FiStar className="text-accent-cyan" /> Iniciar Novo Projeto
                 </motion.button>
               </div>
 
+              {/* Back to Carousel */}
               <button 
                 onClick={() => setShowResults(false)}
                 className="mt-12 text-white/20 hover:text-accent-cyan transition-colors flex items-center gap-2 text-xs uppercase tracking-widest font-bold mb-10"
