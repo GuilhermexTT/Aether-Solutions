@@ -1,34 +1,99 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState(null, "", "/");
+      return;
+    }
+
+    if (href.startsWith("/#")) {
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        const offset = 100; // Espaço para o header fixo
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+        
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
+
+  const navLinks = [
+    { name: "Produto", href: "/#portfolio" },
+    { name: "Soluções", href: "/#solucoes" },
+    { name: "Dúvidas", href: "/#faq" },
+    { name: "Sobre nós", href: "/#sobre" },
+  ];
+
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 md:py-6 bg-transparent backdrop-blur-md border-b border-[#0363F8]/10 shadow-[0_10px_40px_rgba(3,99,248,0.06)] will-change-transform"
-      style={{ transform: 'translateZ(0)' }}
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 md:py-5 transition-all duration-500 ${
+        scrolled 
+          ? "bg-[#020F22]/80 backdrop-blur-xl border-b border-accent-cyan/20 shadow-[0_10px_40px_rgba(0,242,255,0.1)]" 
+          : "bg-transparent border-b border-transparent"
+      }`}
     >
-      <Link href="/" className="relative h-12 w-40 md:h-20 md:w-64 group">
+      <Link 
+        href="/" 
+        onClick={(e) => handleSmoothScroll(e, "/")}
+        className="relative h-12 w-40 md:h-16 md:w-56 group transition-transform duration-300 hover:scale-105"
+      >
         <Image 
           src="/logo-marca.png" 
           alt="Aether Solutions Logo" 
           fill 
-          className="object-contain transition-transform duration-300"
+          className="object-contain"
           priority
         />
       </Link>
 
-      <div className="hidden md:flex items-center gap-8 text-sm font-light text-white/60 tracking-wide">
-        <Link href="#" className="hover:text-accent-cyan transition-colors">Produto</Link>
-        <Link href="#" className="hover:text-accent-cyan transition-colors">Soluções</Link>
-        <Link href="#" className="hover:text-accent-cyan transition-colors">Recursos</Link>
-        <Link href="#" className="hover:text-accent-cyan transition-colors">Empresa</Link>
-        <Link href="#" className="hover:text-accent-cyan transition-colors">Carreiras</Link>
+      <div className="hidden md:flex items-center gap-10">
+        {navLinks.map((link) => (
+          <Link 
+            key={link.name}
+            href={link.href}
+            onClick={(e) => handleSmoothScroll(e, link.href)}
+            className="relative text-base font-medium text-white/60 tracking-wider hover:text-white transition-all duration-300 group"
+          >
+            {link.name}
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent-cyan transition-all duration-300 group-hover:w-full shadow-[0_0_8px_rgba(0,242,255,0.8)]" />
+          </Link>
+        ))}
       </div>
 
       <div>
-        <button className="px-6 py-2 rounded-full border border-accent-cyan/30 text-xs font-light text-white hover:bg-accent-cyan/10 hover:border-accent-cyan transition-all shadow-[0_0_15px_rgba(0,242,255,0.15)]">
-          Agendar demo
-        </button>
+        <Link 
+          href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Aether%20Solutions." 
+          target="_blank"
+          className="relative px-8 py-3 rounded-full border border-accent-cyan/30 text-sm font-bold text-white overflow-hidden group transition-all duration-300 hover:border-accent-cyan shadow-[0_0_20px_rgba(0,242,255,0.1)] hover:shadow-[0_0_30px_rgba(0,242,255,0.3)]"
+        >
+          <span className="relative z-10">Falar com Especialista</span>
+          <div className="absolute inset-0 bg-accent-cyan/0 group-hover:bg-accent-cyan/10 transition-colors duration-300" />
+        </Link>
       </div>
     </nav>
   );

@@ -2,10 +2,11 @@
 
 import { FiArrowRight, FiZap } from "react-icons/fi";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section className="py-32 bg-[#020F22] relative overflow-hidden">
+    <section id="contato" className="py-32 bg-[#020F22] relative overflow-hidden">
       {/* Background Glow Effect */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.5 }}
@@ -43,16 +44,21 @@ export default function CTA() {
         </motion.h2>
 
         {/* Centralized Button */}
-        <motion.button 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="group relative px-10 py-5 rounded-2xl bg-[#0363F8] text-white font-semibold text-lg hover:bg-[#0363F8]/90 transition-all duration-500 shadow-[0_0_30px_rgba(3,99,248,0.4)] hover:shadow-[0_0_50px_rgba(3,99,248,0.6)] hover:scale-105 flex items-center gap-3"
+        <Link 
+          href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Aether%20Solutions." 
+          target="_blank"
         >
-          Agendar uma demo
-          <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </motion.button>
+          <motion.button 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="group relative px-10 py-5 rounded-2xl bg-[#0363F8] text-white font-semibold text-lg hover:bg-[#0363F8]/90 transition-all duration-500 shadow-[0_0_30px_rgba(3,99,248,0.4)] hover:shadow-[0_0_50px_rgba(3,99,248,0.6)] hover:scale-105 flex items-center gap-3"
+          >
+            Entrar em Contato
+            <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </motion.button>
+        </Link>
 
         {/* Decorative Bottom Line */}
         <motion.div 

@@ -1,9 +1,30 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        const offset = 100; // Espaço para o header fixo
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+        
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
+
   return (
     <section 
       className="relative min-h-0 md:min-h-[90vh] flex items-center px-8 pt-32 pb-0 md:pb-20 overflow-hidden will-change-transform" 
@@ -52,13 +73,21 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex flex-wrap gap-4 mt-4"
           >
-            <button className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0363F8] to-[#20A2F8] text-white font-bold shadow-[0_0_15px_rgba(3,99,248,0.3)] hover:shadow-[0_0_25px_rgba(3,99,248,0.5)] transition-all flex items-center gap-2">
-              Agendar uma demo
+            <Link 
+              href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Aether%20Solutions." 
+              target="_blank"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0363F8] to-[#20A2F8] text-white font-bold shadow-[0_0_15px_rgba(3,99,248,0.3)] hover:shadow-[0_0_25px_rgba(3,99,248,0.5)] transition-all flex items-center gap-2"
+            >
+              Falar com Especialista
               <span className="text-xl">→</span>
-            </button>
-            <button className="px-8 py-4 rounded-xl border border-white/20 bg-[#000B1F] font-semibold text-white shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:bg-white/5 transition-all">
+            </Link>
+            <Link 
+              href="/#portfolio" 
+              onClick={(e) => handleSmoothScroll(e, "/#portfolio")}
+              className="px-8 py-4 rounded-xl border border-white/20 bg-[#000B1F] font-semibold text-white shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:bg-white/5 transition-all"
+            >
               Conheça o produto
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 

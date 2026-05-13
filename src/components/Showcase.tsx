@@ -100,8 +100,28 @@ export default function Showcase() {
     return projects.filter(p => p.type === filter).length;
   };
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLButtonElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        e.preventDefault();
+        const offset = 100; // Espaço para o header fixo
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+        
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
+
   return (
-    <section className="relative py-24 min-h-[900px] overflow-hidden bg-[#020F22]">
+    <section id="portfolio" className="relative py-24 min-h-[900px] overflow-hidden bg-[#000B1F]">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
         style={{ 
@@ -192,7 +212,7 @@ export default function Showcase() {
                           />
 
                           {/* Overlay & Content */}
-                          <div className={`absolute inset-0 bg-gradient-to-t from-[#020F22] via-transparent to-transparent flex flex-col justify-end p-6 md:p-10
+                          <div className={`absolute inset-0 bg-gradient-to-t from-[#000B1F] via-transparent to-transparent flex flex-col justify-end p-6 md:p-10
                             ${isCenter ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'} transition-opacity duration-300`}>
                             
                             {isCenter && (
@@ -279,7 +299,7 @@ export default function Showcase() {
                         : "border-white/5 bg-white/[0.02] text-white/40 hover:border-white/20 hover:text-white"}`}
                   >
                     {cat.name} 
-                    <span className={`px-2 py-0.5 rounded-md text-[10px] ${activeCategory === cat.filter ? "bg-accent-cyan text-[#020F22]" : "bg-white/10 text-white/40"}`}>
+                    <span className={`px-2 py-0.5 rounded-md text-[10px] ${activeCategory === cat.filter ? "bg-accent-cyan text-[#000B1F]" : "bg-white/10 text-white/40"}`}>
                       {getCount(cat.filter)}
                     </span>
                   </button>
@@ -304,7 +324,7 @@ export default function Showcase() {
                     />
                     
                     {/* Project Info Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-transparent to-transparent p-10 flex flex-col justify-between">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#000B1F] via-transparent to-transparent p-10 flex flex-col justify-between">
                       <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-[10px] font-bold text-accent-cyan uppercase tracking-tighter w-fit h-fit backdrop-blur-md">
                         {project.category}
                       </div>
@@ -324,7 +344,8 @@ export default function Showcase() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-2xl bg-[#020F22] border border-accent-cyan/50 text-white font-bold flex items-center gap-3 shadow-[0_0_30px_rgba(0,242,255,0.1)] hover:shadow-[0_0_40px_rgba(0,242,255,0.2)] transition-all"
+                  onClick={(e) => handleSmoothScroll(e, "/#contato")}
+                  className="px-8 py-4 rounded-2xl bg-[#000B1F] border border-accent-cyan/50 text-white font-bold flex items-center gap-3 shadow-[0_0_30px_rgba(0,242,255,0.1)] hover:shadow-[0_0_40px_rgba(0,242,255,0.2)] transition-all"
                 >
                   <FiStar className="text-accent-cyan" /> Iniciar Novo Projeto
                 </motion.button>

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #020F22;
   --foreground: #f8fafc;
@@ -126,8 +130,6 @@ body {
   backface-visibility: hidden;
   perspective: 1000px;
 }
-
-
 
 @keyframes spark-rise {
   0% {
