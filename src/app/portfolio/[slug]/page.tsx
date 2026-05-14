@@ -39,6 +39,14 @@ export default function ProjectPage() {
 
   const [selectedMedia, setSelectedMedia] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const nextMedia = () => {
     if (selectedMedia === null) return;
@@ -178,15 +186,15 @@ export default function ProjectPage() {
           {project.gallery.map((item, idx) => (
             <motion.div
               key={idx}
-              variants={{
+              variants={isMobile ? undefined : {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0 }
               }}
-              onClick={() => {
-                if (window.innerWidth >= 768) {
-                  setSelectedMedia(idx);
-                }
-              }}
+              initial={isMobile ? { opacity: 0.3, scale: 0.95 } : undefined}
+              whileInView={isMobile ? { opacity: 1, scale: 1 } : undefined}
+              viewport={isMobile ? { once: false, margin: "-15% 0px -15% 0px" } : undefined}
+              transition={isMobile ? { duration: 0.6, ease: "easeOut" } : undefined}
+              onClick={() => setSelectedMedia(idx)}
               className={`relative md:rounded-[32px] overflow-hidden md:border border-white/10 group md:shadow-2xl cursor-pointer ${item.span || ""}`}
             >
               {item.type === "video" ? (

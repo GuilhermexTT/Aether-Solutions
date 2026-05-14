@@ -120,7 +120,7 @@ export default function Solutions() {
                 </div>
 
                 {/* Features List */}
-                <ul className="flex flex-col gap-3 md:gap-4 self-start w-full max-w-md mx-auto">
+                <ul className="flex flex-col gap-3 md:gap-4 self-start w-full max-w-md mx-auto mb-10 md:mb-12">
                   {sol.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex items-center gap-3 text-white/70 text-xs md:text-sm font-light">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,242,255,0.8)] flex-shrink-0" />

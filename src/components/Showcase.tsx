@@ -148,10 +148,10 @@ export default function Showcase() {
                 </motion.h2>
               </div>
 
-              {/* Mobile List (Vertical Stack) */}
-              <div className="md:hidden flex flex-col gap-6 w-full px-4 mb-8">
+              {/* Mobile Carousel (Horizontal Swipe) */}
+              <div className="md:hidden flex gap-6 w-full px-4 mb-8 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pb-4">
                 {projects.map((project) => (
-                  <div key={`mobile-${project.id}`} className="relative w-full aspect-[4/3] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl">
+                  <div key={`mobile-${project.id}`} className="relative w-[85vw] flex-shrink-0 aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl snap-center">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -176,6 +176,15 @@ export default function Showcase() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Mobile Swipe Indicator */}
+              <div className="md:hidden flex justify-center items-center gap-3 mt-0 mb-10 opacity-60">
+                <FiChevronLeft className="w-3 h-3 text-accent-cyan animate-[pulse_2s_ease-in-out_infinite]" />
+                <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-white/70">
+                  Deslize para ver mais
+                </span>
+                <FiChevronRight className="w-3 h-3 text-accent-cyan animate-[pulse_2s_ease-in-out_infinite]" />
               </div>
 
               {/* Desktop Carousel (Stacked) */}
