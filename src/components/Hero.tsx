@@ -74,7 +74,7 @@ export default function Hero() {
             className="flex flex-wrap gap-4 mt-4"
           >
             <Link 
-              href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Aether%20Solutions." 
+              href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions." 
               target="_blank"
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0363F8] to-[#20A2F8] text-white font-bold shadow-[0_0_15px_rgba(3,99,248,0.3)] hover:shadow-[0_0_25px_rgba(3,99,248,0.5)] transition-all flex items-center gap-2"
             >

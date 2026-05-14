@@ -157,10 +157,14 @@ export default function FAQ() {
             </p>
           </div>
           
-          <button className="mt-4 px-8 py-4 rounded-2xl bg-[#020F22] border border-[#084B6E] text-white font-medium text-sm hover:bg-accent-cyan hover:text-[#020F22] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all duration-500 group flex items-center gap-3">
+          <Link 
+            href="https://wa.me/5511994061379?text=Olá, ainda tenho algumas dúvidas sobre a Aether Solutions e gostaria de conversar."
+            target="_blank"
+            className="mt-4 px-8 py-4 rounded-2xl bg-[#020F22] border border-[#084B6E] text-white font-medium text-sm hover:bg-accent-cyan hover:text-[#020F22] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all duration-500 group flex items-center gap-3"
+          >
             Falar com especialista
             <div className="w-2 h-2 rounded-full bg-accent-cyan group-hover:bg-[#020F22] animate-pulse" />
-          </button>
+          </Link>
         </motion.div>
 
       </div>

@@ -45,7 +45,7 @@ export default function CTA() {
 
         {/* Centralized Button */}
         <Link 
-          href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Aether%20Solutions." 
+          href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions e iniciar meu projeto." 
           target="_blank"
         >
           <motion.button 
