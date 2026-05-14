@@ -232,9 +232,7 @@ export default function PersonalizadoPage() {
                 <FiMail className="w-5 h-5" />
                 Falar com a equipe
               </a>
-              <p className="text-white/20 text-xs mt-6 tracking-wider">
-                Resposta em até 24 horas úteis
-              </p>
+
             </div>
           </motion.div>
 

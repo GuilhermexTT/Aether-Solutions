@@ -44,14 +44,11 @@ export default function Architecture({ className }: ArchitectureProps) {
   ];
 
   const stack = [
-    { label: "LLM", name: "GPT-4" },
-    { label: "LLM", name: "Claude AI" },
-    { label: "FRAMEWORK", name: "LangChain" },
-    { label: "BACKEND", name: "Python" },
-    { label: "BACKEND", name: "Node.js" },
-    { label: "FRONTEND", name: "React" },
-    { label: "INTEGRATION", name: "WhatsApp API" },
-    { label: "DATABASE", name: "PostgreSQL" },
+    { label: "LLM", name: "Google Gemini" },
+    { label: "ORQUESTRAÇÃO", name: "n8n" },
+    { label: "BANCO DE DADOS", name: "PostgreSQL" },
+    { label: "INTEGRAÇÃO", name: "Evolution API" },
+    { label: "RUNTIME", name: "Node.js" },
   ];
 
   const containerVariants: Variants = {

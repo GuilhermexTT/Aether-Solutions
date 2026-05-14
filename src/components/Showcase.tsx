@@ -150,7 +150,7 @@ export default function Showcase() {
 
               {/* Mobile Carousel (Horizontal Swipe) */}
               <div className="md:hidden flex gap-6 w-full px-4 mb-8 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pb-4">
-                {projects.map((project) => (
+                {projects.map((project, idx) => (
                   <div key={`mobile-${project.id}`} className="relative w-[85vw] flex-shrink-0 aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl snap-center">
                     <Image
                       src={project.image}
