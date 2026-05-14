@@ -79,11 +79,12 @@ export default function Solutions() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="flex justify-center mb-6"
+          className="flex justify-center mb-10"
         >
-          <p className="text-white/20 text-[10px] uppercase tracking-[0.2em] font-medium animate-pulse italic">
-            ✦ Clique nos cards para ver detalhes
-          </p>
+          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 text-[10px] uppercase tracking-[0.2em] font-medium animate-bounce shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse"></span>
+            Selecione uma opção abaixo
+          </div>
         </motion.div>
 
         <motion.div 
@@ -128,15 +129,17 @@ export default function Solutions() {
                   ))}
                 </ul>
                 
-                <div className="mt-8 md:mt-12 flex items-center gap-2 text-accent-cyan text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-all duration-500 group-hover:translate-x-2">
-                  Saber mais 
-                  <motion.span 
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                    className="text-lg"
-                  >
-                    →
-                  </motion.span>
+                <div className="mt-12 md:mt-auto pt-8 w-full flex justify-center border-t border-white/5">
+                  <div className="flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan/10 border border-accent-cyan/40 text-accent-cyan text-xs font-bold uppercase tracking-widest group-hover:bg-accent-cyan group-hover:text-[#020F22] group-hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all duration-500 shadow-[0_0_15px_rgba(0,242,255,0.1)] w-full justify-center">
+                    Explorar Solução
+                    <motion.span 
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                      className="text-lg"
+                    >
+                      →
+                    </motion.span>
+                  </div>
                 </div>
               </Link>
             </motion.div>

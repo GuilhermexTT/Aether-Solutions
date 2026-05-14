@@ -16,6 +16,7 @@ const projectData = {
     description: "Transformação digital completa para clínica de estética de luxo. Implementamos uma interface de alta conversão integrada com sistemas de agendamento e galeria de resultados.",
     client: "Dra Thaina Carvalho",
     year: "2026",
+    liveUrl: "https://dra-thaina-carvalho.vercel.app/",
     services: ["Web Design", "SEO", "Agendamento Online"],
     gallery: [
       { type: "video", url: "https://res.cloudinary.com/drsv0whjm/video/upload/v1777823434/LadingPage_DraThaina_ooewtj.mp4", span: "md:col-span-2 md:row-span-2" },
@@ -119,6 +120,19 @@ export default function ProjectPage() {
             <p className="text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-xl">
               {project.description}
             </p>
+
+            {project.liveUrl && (
+              <div className="mt-10">
+                <Link 
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-accent-cyan text-[#020F22] font-bold shadow-[0_0_15px_rgba(0,242,255,0.2)] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all hover:scale-105"
+                >
+                  Veja o site ao vivo <FiExternalLink />
+                </Link>
+              </div>
+            )}
           </motion.div>
 
           <motion.div 
@@ -148,7 +162,7 @@ export default function ProjectPage() {
           </motion.div>
         </div>
 
-        {/* Pinterest Style Gallery - Respecting Aspect Ratio */}
+        {/* Desktop Grid Gallery / Mobile Full-width Stack */}
         <motion.div 
           variants={{
             hidden: { opacity: 0 },
@@ -159,7 +173,7 @@ export default function ProjectPage() {
           }}
           initial="hidden"
           animate="show"
-          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 min-h-[500px]"
+          className="flex flex-col gap-0 space-y-0 -mx-4 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[minmax(250px,auto)] min-h-[500px]"
         >
           {project.gallery.map((item, idx) => (
             <motion.div
@@ -168,14 +182,18 @@ export default function ProjectPage() {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0 }
               }}
-              onClick={() => setSelectedMedia(idx)}
-              className={`relative rounded-[32px] overflow-hidden border border-white/10 group shadow-2xl cursor-pointer break-inside-avoid`}
+              onClick={() => {
+                if (window.innerWidth >= 768) {
+                  setSelectedMedia(idx);
+                }
+              }}
+              className={`relative md:rounded-[32px] overflow-hidden md:border border-white/10 group md:shadow-2xl cursor-pointer ${item.span || ""}`}
             >
               {item.type === "video" ? (
-                <div className="relative w-full bg-black">
+                <div className="relative w-full h-full bg-black">
                   <video 
                     src={item.url} 
-                    className="w-full h-auto"
+                    className="w-full h-auto md:h-full md:object-cover"
                     playsInline
                     muted
                     autoPlay
@@ -192,10 +210,10 @@ export default function ProjectPage() {
                   <img 
                     src={item.url} 
                     alt={`${project.title} gallery ${idx}`}
-                    className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto md:h-full md:object-cover transition-transform duration-700 md:group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-accent-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <div className="absolute inset-0 border-2 border-accent-cyan/0 group-hover:border-accent-cyan/20 rounded-[32px] transition-all duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 bg-accent-cyan/10 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 border-2 border-accent-cyan/0 md:group-hover:border-accent-cyan/20 md:rounded-[32px] transition-all duration-500 pointer-events-none" />
                 </>
               )}
             </motion.div>
@@ -245,11 +263,15 @@ export default function ProjectPage() {
                       }`}
                     >
                       {project.gallery[selectedMedia!].type === "video" ? (
-                        <div className="relative w-full max-w-5xl rounded-2xl overflow-hidden bg-black border border-white/10 pointer-events-none">
+                        <div 
+                          className="relative w-full max-w-5xl rounded-2xl overflow-hidden bg-black border border-white/10"
+                          onPointerDown={(e) => e.stopPropagation()}
+                        >
                           <video
                             src={project.gallery[selectedMedia!].url}
                             className="w-full h-auto"
                             autoPlay
+                            controls
                             muted
                             loop
                             playsInline

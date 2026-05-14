@@ -1,39 +1,84 @@
 "use client";
 
-import { FiSearch, FiPenTool, FiCode, FiZap, FiArrowRight, FiMonitor } from "react-icons/fi";
+import { FiSearch, FiPenTool, FiCode, FiZap, FiArrowRight, FiMonitor, FiMessageSquare, FiCpu, FiCheckCircle } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
 
 interface ProcessProps {
   className?: string;
+  variant?: "sites" | "agents";
 }
 
-export default function Process({ className }: ProcessProps) {
-  const steps = [
-    {
-      number: "1",
-      title: "Descoberta",
-      description: "Entendemos seu negócio, público-alvo e objetivos.",
-      icon: <FiSearch className="w-6 h-6 text-accent-cyan" />,
+export default function Process({ className, variant = "sites" }: ProcessProps) {
+  const stepsData = {
+    sites: {
+      badge: "Processo de Criação de Sites",
+      title: "Da ideia ao ",
+      titleHighlight: "lançamento",
+      description: "Cada site é desenvolvido com atenção aos mínimos detalhes, combinando design excepcional, código limpo e performance otimizada.",
+      label: "Nosso Processo",
+      steps: [
+        {
+          number: "1",
+          title: "Descoberta",
+          description: "Entendemos seu negócio, público-alvo e objetivos.",
+          icon: <FiSearch className="w-6 h-6 text-accent-cyan" />,
+        },
+        {
+          number: "2",
+          title: "Design",
+          description: "Criamos wireframes e design UI/UX de alta fidelidade.",
+          icon: <FiPenTool className="w-6 h-6 text-accent-cyan" />,
+        },
+        {
+          number: "3",
+          title: "Desenvolvimento",
+          description: "Codificamos com React, Next.js e otimizações de performance.",
+          icon: <FiCode className="w-6 h-6 text-accent-cyan" />,
+        },
+        {
+          number: "4",
+          title: "Lançamento",
+          description: "Deploy, testes finais e monitoramento contínuo.",
+          icon: <FiZap className="w-6 h-6 text-accent-cyan" />,
+        },
+      ]
     },
-    {
-      number: "2",
-      title: "Design",
-      description: "Criamos wireframes e design UI/UX de alta fidelidade.",
-      icon: <FiPenTool className="w-6 h-6 text-accent-cyan" />,
-    },
-    {
-      number: "3",
-      title: "Desenvolvimento",
-      description: "Codificamos com React, Next.js e otimizações de performance.",
-      icon: <FiCode className="w-6 h-6 text-accent-cyan" />,
-    },
-    {
-      number: "4",
-      title: "Lançamento",
-      description: "Deploy, testes finais e monitoramento contínuo.",
-      icon: <FiZap className="w-6 h-6 text-accent-cyan" />,
-    },
-  ];
+    agents: {
+      badge: "Fluxo de Processamento",
+      title: "Inteligência em ",
+      titleHighlight: "Ação",
+      description: "Nossos agentes de IA seguem um fluxo contínuo e inteligente para analisar, executar e garantir respostas precisas imediatamente.",
+      label: "Fluxo de Processamento",
+      steps: [
+        {
+          number: "1",
+          title: "Recepção",
+          description: "Cliente envia mensagem via WhatsApp ou site.",
+          icon: <FiMessageSquare className="w-6 h-6 text-accent-cyan" />,
+        },
+        {
+          number: "2",
+          title: "Processamento",
+          description: "IA analisa contexto e intenção usando NLP avançado.",
+          icon: <FiCpu className="w-6 h-6 text-accent-cyan" />,
+        },
+        {
+          number: "3",
+          title: "Execução",
+          description: "Agente executa ações e busca informações relevantes.",
+          icon: <FiZap className="w-6 h-6 text-accent-cyan" />,
+        },
+        {
+          number: "4",
+          title: "Resposta",
+          description: "Retorna resposta personalizada em linguagem natural.",
+          icon: <FiCheckCircle className="w-6 h-6 text-accent-cyan" />,
+        },
+      ]
+    }
+  };
+
+  const currentData = stepsData[variant];
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -65,7 +110,7 @@ export default function Process({ className }: ProcessProps) {
           <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#084B6E] bg-white/5 backdrop-blur-sm shadow-[0_0_15px_rgba(8,75,110,0.2)]">
             <FiMonitor className="text-accent-cyan w-4 h-4" />
             <span className="text-[10px] tracking-[0.2em] font-medium text-white/80 uppercase">
-              Processo de Criação de Sites
+              {currentData.badge}
             </span>
           </div>
         </motion.div>
@@ -79,7 +124,7 @@ export default function Process({ className }: ProcessProps) {
             transition={{ duration: 0.7 }}
             className="text-4xl md:text-5xl lg:text-6xl font-light mb-6"
           >
-            Da ideia ao <span className="text-accent-cyan font-normal drop-shadow-[0_0_15px_rgba(0,242,255,0.4)]">lançamento</span>
+            {currentData.title}<span className="text-accent-cyan font-normal drop-shadow-[0_0_15px_rgba(0,242,255,0.4)]">{currentData.titleHighlight}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -88,7 +133,7 @@ export default function Process({ className }: ProcessProps) {
             transition={{ duration: 1, delay: 0.3 }}
             className="text-white/40 font-light text-sm md:text-base max-w-3xl mx-auto leading-relaxed"
           >
-            Cada site é desenvolvido com atenção aos mínimos detalhes, combinando design excepcional, código limpo e performance otimizada.
+            {currentData.description}
           </motion.p>
         </div>
 
@@ -102,7 +147,7 @@ export default function Process({ className }: ProcessProps) {
            <div className="p-3 rounded-xl bg-accent-cyan/10 border border-[#084B6E] shadow-[0_0_15px_rgba(8,75,110,0.2)]">
              <FiMonitor className="text-accent-cyan w-5 h-5" />
            </div>
-           <h3 className="text-2xl font-semibold tracking-tight">Nosso Processo</h3>
+           <h3 className="text-2xl font-semibold tracking-tight">{currentData.label}</h3>
         </motion.div>
 
         {/* Steps Grid */}
@@ -113,10 +158,10 @@ export default function Process({ className }: ProcessProps) {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative"
         >
-          {steps.map((step, idx) => (
+          {currentData.steps.map((step, idx) => (
             <motion.div key={idx} variants={itemVariants} className="flex flex-col items-center text-center group relative">
               {/* Arrow (Desktop Only) */}
-              {idx < steps.length - 1 && (
+              {idx < currentData.steps.length - 1 && (
                 <div className="hidden md:block absolute top-12 -right-4 translate-x-1/2 z-10 text-white/20">
                   <FiArrowRight className="w-6 h-6" />
                 </div>

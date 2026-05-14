@@ -148,67 +148,34 @@ export default function Showcase() {
                 </motion.h2>
               </div>
 
-              {/* Mobile Carousel (With Swipe) */}
-              <div className="md:hidden relative w-full h-[450px] mb-8 group px-4 overflow-hidden">
-                <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                  <motion.div
-                    key={`mobile-${currentIndex}`}
-                    custom={direction}
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={1}
-                    onDragEnd={(e, { offset, velocity }) => {
-                      const swipe = offset.x;
-                      if (swipe < -50) {
-                        nextProject();
-                      } else if (swipe > 50) {
-                        prevProject();
-                      }
-                    }}
-                    transition={{
-                      x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.2 }
-                    }}
-                    className="absolute inset-0 rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl touch-none"
-                  >
+              {/* Mobile List (Vertical Stack) */}
+              <div className="md:hidden flex flex-col gap-6 w-full px-4 mb-8">
+                {projects.map((project) => (
+                  <div key={`mobile-${project.id}`} className="relative w-full aspect-[4/3] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl">
                     <Image
-                      src={projects[currentIndex].image}
-                      alt={projects[currentIndex].title}
+                      src={project.image}
+                      alt={project.title}
                       fill
                       className="object-cover pointer-events-none"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/40 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-8 w-full">
                       <p className="text-accent-cyan text-[10px] font-bold tracking-widest mb-2 uppercase">
-                        {projects[currentIndex].category}
+                        {project.category}
                       </p>
-                      <h2 className="text-2xl font-bold text-white mb-6">
-                        {projects[currentIndex].title}
+                      <h2 className="text-2xl font-bold text-white mb-6 drop-shadow-md">
+                        {project.title}
                       </h2>
                       <Link
-                        href={`/portfolio/${projects[currentIndex].slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#020F22] text-xs font-bold rounded-lg"
+                        href={`/portfolio/${project.slug}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#020F22] text-xs font-bold rounded-lg shadow-lg"
                       >
                         Ver projeto
                         <FiLayout />
                       </Link>
                     </div>
-                  </motion.div>
-                </AnimatePresence>
-                
-                {/* Mobile Arrows */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 pointer-events-none z-10">
-                  <button onClick={prevProject} className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 pointer-events-auto backdrop-blur-md">
-                    <FiChevronLeft size={24} />
-                  </button>
-                  <button onClick={nextProject} className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 pointer-events-auto backdrop-blur-md">
-                    <FiChevronRight size={24} />
-                  </button>
-                </div>
+                  </div>
+                ))}
               </div>
 
               {/* Desktop Carousel (Stacked) */}
