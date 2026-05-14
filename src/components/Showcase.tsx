@@ -45,12 +45,36 @@ export default function Showcase() {
   const [showResults, setShowResults] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Todos");
 
+  const [direction, setDirection] = useState(0);
+
   const nextProject = () => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 0.9,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 0.9,
+    }),
   };
 
   const filteredProjects = activeCategory === "Todos" 
@@ -125,13 +149,18 @@ export default function Showcase() {
               </div>
 
               {/* Mobile Carousel (With Swipe) */}
-              <div className="md:hidden relative w-full h-[450px] mb-8 group px-4">
-                <AnimatePresence mode="wait">
+              <div className="md:hidden relative w-full h-[450px] mb-8 group px-4 overflow-hidden">
+                <AnimatePresence initial={false} custom={direction} mode="popLayout">
                   <motion.div
                     key={`mobile-${currentIndex}`}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.2}
+                    dragElastic={1}
                     onDragEnd={(e, { offset, velocity }) => {
                       const swipe = offset.x;
                       if (swipe < -50) {
@@ -140,10 +169,10 @@ export default function Showcase() {
                         prevProject();
                       }
                     }}
-                    initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
-                    transition={{ duration: 0.5 }}
+                    transition={{
+                      x: { type: "spring", stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.2 }
+                    }}
                     className="absolute inset-0 rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl touch-none"
                   >
                     <Image
@@ -172,7 +201,7 @@ export default function Showcase() {
                 </AnimatePresence>
                 
                 {/* Mobile Arrows */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 pointer-events-none">
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 pointer-events-none z-10">
                   <button onClick={prevProject} className="p-3 rounded-full bg-white/5 border border-white/10 text-white/50 pointer-events-auto backdrop-blur-md">
                     <FiChevronLeft size={24} />
                   </button>

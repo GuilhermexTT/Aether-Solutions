@@ -37,17 +37,33 @@ export default function ProjectPage() {
   const project = projectData[slug as keyof typeof projectData] || projectData["taina-estetica"];
 
   const [selectedMedia, setSelectedMedia] = useState<number | null>(null);
+  const [direction, setDirection] = useState(0);
 
   const nextMedia = () => {
-    if (selectedMedia !== null) {
-      setSelectedMedia((selectedMedia + 1) % project.gallery.length);
-    }
+    if (selectedMedia === null) return;
+    setDirection(1);
+    setSelectedMedia((prev) => (prev! + 1) % project.gallery.length);
   };
 
   const prevMedia = () => {
-    if (selectedMedia !== null) {
-      setSelectedMedia((selectedMedia - 1 + project.gallery.length) % project.gallery.length);
-    }
+    if (selectedMedia === null) return;
+    setDirection(-1);
+    setSelectedMedia((prev) => (prev! - 1 + project.gallery.length) % project.gallery.length);
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
   };
 
   // Block body scroll when Lightbox is open
@@ -216,47 +232,58 @@ export default function ProjectPage() {
                 </div>
 
                 {/* Media Container (With Swipe) */}
-                <motion.div
-                  key={selectedMedia}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
-                  onDragEnd={(e, { offset, velocity }) => {
-                    const swipe = offset.x;
-                    if (swipe < -50) {
-                      nextMedia();
-                    } else if (swipe > 50) {
-                      prevMedia();
-                    }
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.1, ease: "linear" }}
-                  className={`relative w-full flex flex-col items-center justify-center p-4 will-change-[opacity] touch-none ${
-                    project.gallery[selectedMedia].type === "video" ? "max-h-[95vh]" : "max-h-[80vh]"
-                  }`}
-                >
-                  {project.gallery[selectedMedia].type === "video" ? (
-                    <div className="relative w-full max-w-5xl rounded-2xl overflow-hidden bg-black border border-white/10">
-                      <video 
-                        src={project.gallery[selectedMedia].url} 
-                        className="w-full h-auto max-h-[85vh] object-contain"
-                        controls
-                        autoPlay
-                      />
-                    </div>
-                  ) : (
-                    <div className="relative rounded-2xl overflow-hidden bg-black border border-white/10">
-                      <img 
-                        src={project.gallery[selectedMedia].url} 
-                        alt="Lightbox view"
-                        className="max-w-full max-h-[75vh] object-contain block"
-                        loading="eager"
-                      />
-                    </div>
-                  )}
-                </motion.div>
+                <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                  <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                    <motion.div
+                      key={selectedMedia}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={1}
+                      onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = offset.x;
+                        if (swipe < -50) {
+                          nextMedia();
+                        } else if (swipe > 50) {
+                          prevMedia();
+                        }
+                      }}
+                      transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                      }}
+                      className={`absolute inset-0 flex flex-col items-center justify-center p-4 will-change-[opacity,transform] touch-none ${
+                        project.gallery[selectedMedia!].type === "video" ? "max-h-[95vh]" : "max-h-[80vh]"
+                      }`}
+                    >
+                      {project.gallery[selectedMedia!].type === "video" ? (
+                        <div className="relative w-full max-w-5xl rounded-2xl overflow-hidden bg-black border border-white/10 pointer-events-none">
+                          <video
+                            src={project.gallery[selectedMedia!].url}
+                            className="w-full h-auto"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        </div>
+                      ) : (
+                        <div className="relative w-full h-full max-w-5xl pointer-events-none">
+                          <img
+                            src={project.gallery[selectedMedia!].url}
+                            alt="Project media"
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                
                 {/* Close button - Below image */}
                 <motion.button 
                   initial={{ opacity: 0, y: 20 }}
