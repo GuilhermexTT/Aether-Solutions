@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FiLayout, FiCpu } from "react-icons/fi";
+import { FiLayout, FiCpu, FiZap } from "react-icons/fi";
 import { motion, Variants } from "framer-motion";
 
 export default function Solutions() {
@@ -33,6 +33,20 @@ export default function Solutions() {
       href: "/solucoes/sites",
     },
   ];
+
+  const customSolution = {
+    title: "Sob Medida",
+    tagline: "Tem um problema específico? A gente resolve.",
+    description: "Não encontrou o que precisa? Nós somos uma empresa de soluções — conte seu desafio e juntos vamos descobrir se existe um caminho tecnológico para resolvê-lo.",
+    bullets: [
+      "Diagnóstico gratuito do seu problema",
+      "Avaliação de viabilidade técnica e financeira",
+      "Planejamento e arquitetura da solução",
+      "Desenvolvimento de aplicações e sistemas",
+      "Decisão transparente: vamos ou não vamos?",
+    ],
+    href: "/solucoes/personalizado",
+  };
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -92,8 +106,10 @@ export default function Solutions() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto"
+          className="flex flex-col gap-8 md:gap-10 max-w-6xl mx-auto"
         >
+          {/* Top 2 cards side by side */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {solutions.map((sol, idx) => (
             <motion.div key={idx} variants={itemVariants}>
               <Link 
@@ -144,6 +160,62 @@ export default function Solutions() {
               </Link>
             </motion.div>
           ))}
+          </div>
+
+          {/* Bottom full-width card - Sob Medida */}
+          <motion.div variants={itemVariants} className="w-full">
+            <Link
+              href={customSolution.href}
+              className="relative flex flex-col md:flex-row items-center gap-10 md:gap-16 p-8 md:p-12 rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-accent-cyan/5 to-[#0363F8]/10 backdrop-blur-xl border border-accent-cyan/20 group hover:border-accent-cyan/50 hover:shadow-[0_0_80px_rgba(0,242,255,0.15)] hover:translate-y-1 transition-all duration-500 cursor-pointer shadow-[0_0_30px_rgba(0,242,255,0.05)] overflow-hidden h-full"
+            >
+              {/* Glow background decoration */}
+              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none group-hover:bg-accent-cyan/10 transition-all duration-700" />
+
+              {/* Left: Icon + Heading */}
+              <div className="flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0 md:w-80">
+                <div className="p-5 rounded-2xl bg-accent-cyan/10 border border-accent-cyan/30 mb-6 group-hover:border-accent-cyan/60 group-hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] transition-all duration-500">
+                  <FiZap className="w-8 h-8 text-accent-cyan" />
+                </div>
+                <div className="text-accent-cyan text-[10px] font-bold tracking-widest uppercase mb-3">Solução Personalizada</div>
+                <h3 className="text-2xl md:text-4xl font-bold text-white uppercase tracking-wider mb-4 group-hover:text-accent-cyan transition-colors">
+                  {customSolution.title}
+                </h3>
+                <p className="text-white/70 text-sm md:text-base font-light leading-relaxed italic">
+                  &ldquo;{customSolution.tagline}&rdquo;
+                </p>
+              </div>
+
+              {/* Divider */}
+              <div className="hidden md:block w-px self-stretch bg-white/10 flex-shrink-0" />
+
+              {/* Right: Description + Features + Button */}
+              <div className="flex flex-col flex-1 gap-6">
+                <p className="text-white/50 text-sm md:text-base font-light leading-relaxed">
+                  {customSolution.description}
+                </p>
+                <ul className="flex flex-col gap-3">
+                  {customSolution.bullets.map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-white/70 text-sm font-light">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,242,255,0.8)] flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-6 border-t border-white/5">
+                  <div className="flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan/10 border border-accent-cyan/40 text-accent-cyan text-xs font-bold uppercase tracking-widest group-hover:bg-accent-cyan group-hover:text-[#020F22] group-hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all duration-500 justify-center md:justify-start w-full md:w-fit">
+                    Conte seu problema
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                      className="text-lg"
+                    >
+                      →
+                    </motion.span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>
