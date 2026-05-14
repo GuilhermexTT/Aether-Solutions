@@ -109,7 +109,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
-                  href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento." 
+                  href="https://wa.me/5511994061379?text=Olá, gostaria de solicitar um orçamento para o meu projeto." 
                   target="_blank"
                   className="text-white/40 text-sm font-light hover:text-accent-cyan transition-all duration-300"
                 >
@@ -124,7 +124,7 @@ export default function Footer() {
             <h4 className="text-white text-base font-bold tracking-tight uppercase">Contato Direto</h4>
             <div className="flex flex-col gap-6">
               <Link 
-                href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista." 
+                href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions." 
                 target="_blank"
                 className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-white font-medium text-sm flex items-center justify-center gap-3 hover:bg-accent-cyan/10 hover:border-accent-cyan transition-all duration-500 group shadow-lg"
               >

@@ -214,22 +214,6 @@ export default function ProjectPage() {
               onClick={() => setSelectedMedia(null)}
             >
               <div className="relative w-full h-full flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
-                {/* Navigation - Floating Arrows */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-10 pointer-events-none z-30">
-                  <button 
-                    onClick={prevMedia}
-                    className="p-6 md:p-8 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all pointer-events-auto group shadow-lg"
-                  >
-                    <FiArrowLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
-                  </button>
-
-                  <button 
-                    onClick={nextMedia}
-                    className="p-6 md:p-8 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all pointer-events-auto group shadow-lg"
-                  >
-                    <FiArrowLeft size={32} className="rotate-180 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
 
                 {/* Media Container (With Swipe) */}
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
@@ -284,20 +268,29 @@ export default function ProjectPage() {
                   </AnimatePresence>
                 </div>
                 
-                {/* Close button - Below image */}
-                <motion.button 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="mt-8 flex items-center gap-3 px-8 py-3 rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-accent-cyan transition-all z-[300] group shadow-xl"
-                  onClick={(e) => { e.stopPropagation(); setSelectedMedia(null); }}
-                >
-                  <div className="relative w-5 h-5 flex items-center justify-center">
-                    <span className="absolute w-full h-0.5 bg-white rotate-45 rounded-full group-hover:bg-accent-cyan" />
-                    <span className="absolute w-full h-0.5 bg-white -rotate-45 rounded-full group-hover:bg-accent-cyan" />
-                  </div>
-                  <span className="text-xs font-bold tracking-[0.2em] uppercase">Fechar Visualização</span>
-                </motion.button>
+                {/* Navigation - Bottom Controls */}
+                <div className="flex items-center gap-6 mt-8 z-30">
+                  <button 
+                    onClick={prevMedia}
+                    className="p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all group"
+                  >
+                    <FiArrowLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+                  </button>
+
+                  <button 
+                    onClick={() => setSelectedMedia(null)}
+                    className="px-8 py-3 rounded-full bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white/20 transition-all"
+                  >
+                    Fechar
+                  </button>
+
+                  <button 
+                    onClick={nextMedia}
+                    className="p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all group"
+                  >
+                    <FiArrowLeft size={24} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}

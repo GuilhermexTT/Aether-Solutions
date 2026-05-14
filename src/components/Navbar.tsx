@@ -95,10 +95,10 @@ export default function Navbar() {
         <Link 
           href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions." 
           target="_blank"
-          className="relative px-4 py-2 md:px-8 md:py-3 rounded-full border border-accent-cyan/30 text-[10px] md:text-sm font-bold text-white overflow-hidden group transition-all duration-300 hover:border-accent-cyan shadow-[0_0_20px_rgba(0,242,255,0.1)] hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] whitespace-nowrap"
+          className="relative px-4 py-2 md:px-8 md:py-3 rounded-full border border-accent-cyan/30 text-[10px] md:text-sm font-bold text-white group transition-all duration-300 hover:border-accent-cyan shadow-[0_0_20px_rgba(0,242,255,0.1)] hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] whitespace-nowrap bg-white/5 backdrop-blur-sm"
         >
           <span className="relative z-10">Falar com Especialista</span>
-          <div className="absolute inset-0 bg-accent-cyan/0 group-hover:bg-accent-cyan/10 transition-colors duration-300" />
+          <div className="absolute inset-0 rounded-full bg-accent-cyan/0 group-hover:bg-accent-cyan/10 transition-colors duration-300" />
         </Link>
       </div>
     </nav>
