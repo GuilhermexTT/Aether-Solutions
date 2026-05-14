@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FiPlus, FiMinus, FiHelpCircle } from "react-icons/fi";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import Link from "next/link";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
