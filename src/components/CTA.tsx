@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section id="contato" className="py-32 bg-[#020F22] relative overflow-hidden">
+    <section id="contato" className="pt-12 pb-32 bg-[#020F22] relative overflow-hidden">
       {/* Background Glow Effect */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.5 }}

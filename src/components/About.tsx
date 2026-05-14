@@ -45,7 +45,7 @@ export default function About() {
   };
 
   return (
-    <section id="sobre" className="py-16 px-8 bg-[#020F22] overflow-hidden">
+    <section id="sobre" className="pt-16 pb-8 px-8 bg-[#020F22] overflow-hidden">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
         <motion.div 

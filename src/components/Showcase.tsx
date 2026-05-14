@@ -125,7 +125,7 @@ export default function Showcase() {
               </div>
 
               {/* Mobile Carousel */}
-              <div className="md:hidden relative w-full h-[450px] mb-12 group px-4">
+              <div className="md:hidden relative w-full h-[450px] mb-8 group px-4">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`mobile-${currentIndex}`}
@@ -172,7 +172,7 @@ export default function Showcase() {
               </div>
 
               {/* Desktop Carousel (Stacked) */}
-              <div className="hidden md:flex relative w-full max-w-[1400px] h-[650px] items-center justify-center mb-12 overflow-hidden">
+              <div className="hidden md:flex relative w-full max-w-[1400px] h-[550px] items-center justify-center mb-0 overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false}>
                   {[-1, 0, 1].map((offset) => {
                     const index = (currentIndex + offset + projects.length) % projects.length;
@@ -235,7 +235,7 @@ export default function Showcase() {
               </div>
 
               {/* Pagination Dots */}
-              <div className="flex justify-center gap-3 mt-12 mb-12">
+              <div className="flex justify-center gap-3 mt-4 mb-8">
                 {projects.map((_, idx) => (
                   <button
                     key={idx}

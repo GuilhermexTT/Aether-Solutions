@@ -3,9 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +19,9 @@ export default function Navbar() {
   }, []);
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Se não estiver na home, deixa o Link navegar normalmente
+    if (pathname !== "/") return;
+
     if (href === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -60,7 +66,7 @@ export default function Navbar() {
       <Link 
         href="/" 
         onClick={(e) => handleSmoothScroll(e, "/")}
-        className="relative h-12 w-40 md:h-16 md:w-56 group transition-transform duration-300 hover:scale-105"
+        className="relative h-10 w-32 md:h-16 md:w-56 group transition-transform duration-300 hover:scale-105"
       >
         <Image 
           src="/logo-marca.png" 
@@ -85,11 +91,11 @@ export default function Navbar() {
         ))}
       </div>
 
-      <div>
+      <div className="flex-shrink-0">
         <Link 
-          href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20da%20Aether%20Solutions." 
+          href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions." 
           target="_blank"
-          className="relative px-8 py-3 rounded-full border border-accent-cyan/30 text-sm font-bold text-white overflow-hidden group transition-all duration-300 hover:border-accent-cyan shadow-[0_0_20px_rgba(0,242,255,0.1)] hover:shadow-[0_0_30px_rgba(0,242,255,0.3)]"
+          className="relative px-4 py-2 md:px-8 md:py-3 rounded-full border border-accent-cyan/30 text-[10px] md:text-sm font-bold text-white overflow-hidden group transition-all duration-300 hover:border-accent-cyan shadow-[0_0_20px_rgba(0,242,255,0.1)] hover:shadow-[0_0_30px_rgba(0,242,255,0.3)] whitespace-nowrap"
         >
           <span className="relative z-10">Falar com Especialista</span>
           <div className="absolute inset-0 bg-accent-cyan/0 group-hover:bg-accent-cyan/10 transition-colors duration-300" />

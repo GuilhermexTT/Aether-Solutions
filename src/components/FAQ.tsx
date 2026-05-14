@@ -56,7 +56,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-16 bg-[#020F22] text-white overflow-hidden">
+    <section id="faq" className="pt-8 pb-12 bg-[#020F22] text-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-4xl">
         
         {/* Top Badge */}
