@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import VLibras from "@/components/VLibras";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -66,6 +67,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <ScrollToTop />
+        <VLibras />
       </body>
     </html>
   );
