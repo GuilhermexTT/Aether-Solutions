@@ -201,6 +201,7 @@ export default function ProjectPage() {
                 <div className="relative w-full h-full bg-black">
                   <video 
                     src={item.url} 
+                    poster={item.url.replace(".mp4", ".jpg")}
                     className="w-full h-auto md:h-full md:object-cover"
                     playsInline
                     muted
@@ -215,10 +216,12 @@ export default function ProjectPage() {
                 </div>
               ) : (
                 <>
-                  <img 
+                  <Image 
                     src={item.url} 
                     alt={`${project.title} gallery ${idx}`}
-                    className="w-full h-auto md:h-full md:object-cover transition-transform duration-700 md:group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 md:group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-accent-cyan/10 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div className="absolute inset-0 border-2 border-accent-cyan/0 md:group-hover:border-accent-cyan/20 md:rounded-[32px] transition-all duration-500 pointer-events-none" />
@@ -277,6 +280,7 @@ export default function ProjectPage() {
                         >
                           <video
                             src={project.gallery[selectedMedia!].url}
+                            poster={project.gallery[selectedMedia!].url.replace(".mp4", ".jpg")}
                             className="w-full h-auto"
                             autoPlay
                             controls
@@ -286,11 +290,13 @@ export default function ProjectPage() {
                           />
                         </div>
                       ) : (
-                        <div className="relative w-full h-full max-w-5xl pointer-events-none">
-                          <img
+                        <div className="relative w-full h-full max-w-5xl">
+                          <Image
                             src={project.gallery[selectedMedia!].url}
                             alt="Project media"
-                            className="w-full h-full object-contain"
+                            fill
+                            className="object-contain"
+                            priority
                           />
                         </div>
                       )}

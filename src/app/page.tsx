@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Showcase from "@/components/Showcase";
 import Solutions from "@/components/Solutions";
-import About from "@/components/About";
-import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
+
+const About = dynamic(() => import("@/components/About"), { ssr: true });
+const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: true });
+const CTA = dynamic(() => import("@/components/CTA"), { ssr: true });
 
 export default function Home() {
   return (

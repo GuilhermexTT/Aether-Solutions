@@ -156,6 +156,7 @@ export default function Showcase() {
                       src={project.image}
                       alt={project.title}
                       fill
+                      priority={idx < 2}
                       className="object-cover pointer-events-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/40 to-transparent" />
