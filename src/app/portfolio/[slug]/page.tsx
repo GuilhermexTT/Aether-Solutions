@@ -215,14 +215,25 @@ export default function ProjectPage() {
                   </button>
                 </div>
 
-                {/* Media Container */}
+                {/* Media Container (With Swipe) */}
                 <motion.div
                   key={selectedMedia}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(e, { offset, velocity }) => {
+                    const swipe = offset.x;
+                    if (swipe < -50) {
+                      nextMedia();
+                    } else if (swipe > 50) {
+                      prevMedia();
+                    }
+                  }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.1, ease: "linear" }}
-                  className={`relative w-full flex flex-col items-center justify-center p-4 will-change-[opacity] ${
+                  className={`relative w-full flex flex-col items-center justify-center p-4 will-change-[opacity] touch-none ${
                     project.gallery[selectedMedia].type === "video" ? "max-h-[95vh]" : "max-h-[80vh]"
                   }`}
                 >

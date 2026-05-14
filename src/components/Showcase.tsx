@@ -124,22 +124,33 @@ export default function Showcase() {
                 </motion.h2>
               </div>
 
-              {/* Mobile Carousel */}
+              {/* Mobile Carousel (With Swipe) */}
               <div className="md:hidden relative w-full h-[450px] mb-8 group px-4">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`mobile-${currentIndex}`}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(e, { offset, velocity }) => {
+                      const swipe = offset.x;
+                      if (swipe < -50) {
+                        nextProject();
+                      } else if (swipe > 50) {
+                        prevProject();
+                      }
+                    }}
                     initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0 rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl"
+                    className="absolute inset-0 rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl touch-none"
                   >
                     <Image
                       src={projects[currentIndex].image}
                       alt={projects[currentIndex].title}
                       fill
-                      className="object-cover"
+                      className="object-cover pointer-events-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-8 w-full">
