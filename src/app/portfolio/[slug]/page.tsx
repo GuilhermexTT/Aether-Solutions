@@ -125,15 +125,17 @@ export default function ProjectPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="pt-40 md:pt-48 pb-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10"
+        className="pt-40 md:pt-48 pb-24 relative z-10"
       >
-        {/* Back Button */}
-        <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-bold tracking-widest text-white/50 uppercase mb-12 hover:bg-accent-cyan/20 hover:text-accent-cyan transition-all">
-          <FiArrowLeft /> Voltar para Home
-        </Link>
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          {/* Back Button */}
+          <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-bold tracking-widest text-white/50 uppercase mb-12 hover:bg-accent-cyan/20 hover:text-accent-cyan transition-all">
+            <FiArrowLeft /> Voltar para Home
+          </Link>
+        </div>
 
         {/* Project Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -201,7 +203,9 @@ export default function ProjectPage() {
           }}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-12 px-6 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[minmax(250px,auto)] min-h-[500px]"
+          className={`flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[minmax(250px,auto)] min-h-[500px] ${
+            slug === "agentbot-ai" ? "max-w-7xl mx-auto px-6 md:px-8" : "w-full"
+          }`}
         >
           {project.gallery.map((item, idx) => (
             <motion.div
@@ -215,8 +219,12 @@ export default function ProjectPage() {
               viewport={isMobile ? { once: false, margin: "-15% 0px -15% 0px" } : undefined}
               transition={isMobile ? { duration: 0.6, ease: "easeOut" } : undefined}
               onClick={() => setSelectedMedia(idx)}
-              className={`relative rounded-[2rem] md:rounded-[32px] overflow-hidden border border-white/10 group md:shadow-2xl cursor-pointer ${
-                item.type === "video" ? "max-w-[80%] mx-auto md:max-w-none shadow-2xl" : "w-full"
+              className={`relative overflow-hidden group md:shadow-2xl cursor-pointer ${
+                slug === "agentbot-ai" 
+                  ? "rounded-[2rem] md:rounded-[32px] border border-white/10" 
+                  : "rounded-none md:rounded-none border-none"
+              } ${
+                item.type === "video" && slug === "agentbot-ai" ? "max-w-[80%] mx-auto md:max-w-none shadow-2xl" : "w-full"
               } ${item.span || ""}`}
             >
               {item.type === "video" ? (
@@ -224,7 +232,7 @@ export default function ProjectPage() {
                   <video 
                     src={item.url} 
                     poster={item.url.replace(".mp4", ".jpg")}
-                    className="w-full h-auto md:h-full md:object-cover"
+                    className={`w-full h-auto md:h-full ${slug === "agentbot-ai" ? "md:object-cover" : "md:object-contain"}`}
                     playsInline
                     muted
                     autoPlay
@@ -237,16 +245,15 @@ export default function ProjectPage() {
                   </div>
                 </div>
               ) : (
-                <div className="relative w-full aspect-[4/3] md:h-full">
+                <div className={`relative w-full ${slug === "agentbot-ai" ? "aspect-[4/3] md:h-full" : "aspect-video md:aspect-[16/9]"}`}>
                   <Image 
                     src={item.url} 
                     alt={`${project.title} gallery ${idx}`}
                     fill
                     className="object-cover transition-transform duration-700 md:group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="100vw"
                   />
                   <div className="absolute inset-0 bg-accent-cyan/10 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <div className="absolute inset-0 border-2 border-accent-cyan/0 md:group-hover:border-accent-cyan/20 md:rounded-[32px] transition-all duration-500 pointer-events-none" />
                 </div>
               )}
             </motion.div>
@@ -295,7 +302,9 @@ export default function ProjectPage() {
                     >
                       {project.gallery[selectedMedia!].type === "video" ? (
                         <div 
-                          className="relative max-h-[70vh] md:max-h-[80vh] w-auto rounded-[3rem] overflow-hidden bg-black border-[8px] border-white/20 flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+                          className={`relative max-h-[70vh] md:max-h-[80vh] w-auto overflow-hidden bg-black flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] ${
+                            slug === "agentbot-ai" ? "rounded-[3rem] border-[8px] border-white/20" : "rounded-2xl"
+                          }`}
                           onPointerDown={(e) => e.stopPropagation()}
                         >
                           <video
@@ -355,7 +364,8 @@ export default function ProjectPage() {
         </AnimatePresence>
 
         {/* Final CTA */}
-        <div className="mt-32 p-12 rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-accent-cyan/30 text-center flex flex-col items-center gap-8 shadow-[0_0_50px_rgba(0,242,255,0.1)]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="mt-32 p-12 rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-accent-cyan/30 text-center flex flex-col items-center gap-8 shadow-[0_0_50px_rgba(0,242,255,0.1)]">
           <h3 className="text-3xl md:text-5xl font-bold tracking-tight">Gostou deste <span className="text-accent-cyan">resultado?</span></h3>
           <p className="text-white/50 max-w-xl font-light">Podemos criar algo tão impactante quanto este projeto para o seu negócio. Vamos conversar hoje mesmo.</p>
           <Link 
@@ -366,6 +376,7 @@ export default function ProjectPage() {
             Iniciar meu projeto
             <FiExternalLink />
           </Link>
+          </div>
         </div>
       </motion.main>
     </div>
