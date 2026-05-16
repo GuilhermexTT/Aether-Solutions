@@ -17,6 +17,7 @@ const projectData = {
     client: "Dra Thaina Carvalho",
     year: "2026",
     liveUrl: "https://dra-thaina-carvalho.vercel.app/",
+    buttonText: "Veja o site ao vivo",
     services: ["Web Design", "SEO", "Agendamento Online"],
     gallery: [
       { type: "video", url: "https://res.cloudinary.com/drsv0whjm/video/upload/v1777823434/LadingPage_DraThaina_ooewtj.mp4", span: "md:col-span-2 md:row-span-2" },
@@ -29,6 +30,25 @@ const projectData = {
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1777823424/7_b8o582.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1777823424/8_ajwsr9.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1777823425/9_x2chqj.png", span: "row-span-1" },
+    ]
+  },
+  "agentbot-ai": {
+    title: "AgentBot AI",
+    category: "Agente WhatsApp",
+    description: "Transforme o WhatsApp da sua empresa com um assistente virtual que realmente entende o seu cliente. Esqueça os robôs de menu engessados: nosso agente de IA conduz conversas fluidas, empáticas e humanizadas 24 horas por dia. Treinado exclusivamente com o contexto do seu negócio, ele é capaz de tirar dúvidas, qualificar leads e agendar reuniões automaticamente. A solução ideal para escalar o seu atendimento de forma inteligente, garantindo que nenhum cliente fique sem resposta enquanto você foca na operação.",
+    client: "Projeto Interno",
+    year: "2026",
+    liveUrl: "https://wa.me/5511994061379",
+    buttonText: "Veja o agente ao vivo",
+    services: ["Automação de IA", "Integração WhatsApp", "Fluxos de Conversação"],
+    gallery: [
+      { type: "video", url: "https://res.cloudinary.com/drsv0whjm/video/upload/v1778896854/AetherMobileAgent_u8sxot.mp4", span: "md:col-span-1 md:row-span-2" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897731/1_vrhl0m.jpg", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897731/2_zv7eij.jpg", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897732/3_orfvft.jpg", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897732/4_zhaxdi.jpg", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897732/5_fbghzf.jpg", span: "md:col-span-2 row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897733/6_ppbvmw.jpg", span: "row-span-1" }
     ]
   }
 };
@@ -113,7 +133,7 @@ export default function ProjectPage() {
         </Link>
 
         {/* Project Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -137,7 +157,7 @@ export default function ProjectPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-accent-cyan text-[#020F22] font-bold shadow-[0_0_15px_rgba(0,242,255,0.2)] hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all hover:scale-105"
                 >
-                  Veja o site ao vivo <FiExternalLink />
+                  {project.buttonText || "Veja ao vivo"} <FiExternalLink />
                 </Link>
               </div>
             )}
@@ -181,7 +201,7 @@ export default function ProjectPage() {
           }}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-0 space-y-0 -mx-4 md:mx-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[minmax(250px,auto)] min-h-[500px]"
+          className="flex flex-col gap-12 px-6 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:auto-rows-[minmax(250px,auto)] min-h-[500px]"
         >
           {project.gallery.map((item, idx) => (
             <motion.div
@@ -195,7 +215,9 @@ export default function ProjectPage() {
               viewport={isMobile ? { once: false, margin: "-15% 0px -15% 0px" } : undefined}
               transition={isMobile ? { duration: 0.6, ease: "easeOut" } : undefined}
               onClick={() => setSelectedMedia(idx)}
-              className={`relative md:rounded-[32px] overflow-hidden md:border border-white/10 group md:shadow-2xl cursor-pointer ${item.span || ""}`}
+              className={`relative rounded-[2rem] md:rounded-[32px] overflow-hidden border border-white/10 group md:shadow-2xl cursor-pointer ${
+                item.type === "video" ? "max-w-[80%] mx-auto md:max-w-none shadow-2xl" : "w-full"
+              } ${item.span || ""}`}
             >
               {item.type === "video" ? (
                 <div className="relative w-full h-full bg-black">
@@ -208,14 +230,14 @@ export default function ProjectPage() {
                     autoPlay
                     loop
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition-opacity bg-black/40">
                     <div className="w-16 h-16 rounded-full border border-accent-cyan bg-accent-cyan/20 flex items-center justify-center text-accent-cyan backdrop-blur-md">
                       <FiExternalLink size={24} />
                     </div>
                   </div>
                 </div>
               ) : (
-                <>
+                <div className="relative w-full aspect-[4/3] md:h-full">
                   <Image 
                     src={item.url} 
                     alt={`${project.title} gallery ${idx}`}
@@ -225,7 +247,7 @@ export default function ProjectPage() {
                   />
                   <div className="absolute inset-0 bg-accent-cyan/10 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div className="absolute inset-0 border-2 border-accent-cyan/0 md:group-hover:border-accent-cyan/20 md:rounded-[32px] transition-all duration-500 pointer-events-none" />
-                </>
+                </div>
               )}
             </motion.div>
           ))}
@@ -269,19 +291,17 @@ export default function ProjectPage() {
                         x: { type: "spring", stiffness: 300, damping: 30 },
                         opacity: { duration: 0.2 }
                       }}
-                      className={`absolute inset-0 flex flex-col items-center justify-center p-4 will-change-[opacity,transform] touch-none ${
-                        project.gallery[selectedMedia!].type === "video" ? "max-h-[95vh]" : "max-h-[80vh]"
-                      }`}
+                      className="absolute inset-0 flex flex-col items-center justify-center p-6 md:p-20 lg:p-32 will-change-[opacity,transform] touch-none"
                     >
                       {project.gallery[selectedMedia!].type === "video" ? (
                         <div 
-                          className="relative w-full max-w-5xl rounded-2xl overflow-hidden bg-black border border-white/10"
+                          className="relative max-h-[70vh] md:max-h-[80vh] w-auto rounded-[3rem] overflow-hidden bg-black border-[8px] border-white/20 flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)]"
                           onPointerDown={(e) => e.stopPropagation()}
                         >
                           <video
                             src={project.gallery[selectedMedia!].url}
                             poster={project.gallery[selectedMedia!].url.replace(".mp4", ".jpg")}
-                            className="w-full h-auto"
+                            className="max-h-[70vh] md:max-h-[80vh] w-auto h-auto object-contain"
                             autoPlay
                             controls
                             muted
@@ -290,14 +310,16 @@ export default function ProjectPage() {
                           />
                         </div>
                       ) : (
-                        <div className="relative w-full h-full max-w-5xl">
-                          <Image
-                            src={project.gallery[selectedMedia!].url}
-                            alt="Project media"
-                            fill
-                            className="object-contain"
-                            priority
-                          />
+                        <div className="relative w-full h-full max-w-5xl flex items-center justify-center">
+                          <div className="relative w-full h-full max-h-[80vh]">
+                            <Image
+                              src={project.gallery[selectedMedia!].url}
+                              alt="Project media"
+                              fill
+                              className="object-contain"
+                              priority
+                            />
+                          </div>
                         </div>
                       )}
                     </motion.div>

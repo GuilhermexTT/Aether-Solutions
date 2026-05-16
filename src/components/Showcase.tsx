@@ -20,8 +20,9 @@ const projects = [
     title: "AgentBot AI",
     slug: "agentbot-ai",
     category: "AGENTE WHATSAPP",
-    image: "/images/showcase/saas.png",
+    image: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778900000/capaai_npclxn.jpg",
     type: "Agentes de IA",
+    scale: 1.25,
   },
   {
     id: 3,
@@ -216,7 +217,8 @@ export default function Showcase() {
                           src={project.image}
                           alt={project.title}
                           fill
-                          className={`object-cover transition-transform duration-700 ${isCenter ? "group-hover:scale-105" : ""}`}
+                          className={`object-cover transition-transform duration-700 ${isCenter ? "group-hover:scale-110" : ""}`}
+                          style={{ transform: `scale(${project.scale || 1})` }}
                         />
                         <div className={`absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent transition-opacity ${isCenter ? "opacity-100" : "opacity-40"}`} />
                         
@@ -350,7 +352,8 @@ export default function Showcase() {
                         src={project.image} 
                         alt={project.title} 
                         fill 
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" 
+                        className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" 
+                        style={{ transform: `scale(${project.scale || 1})` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-transparent to-transparent p-10 flex flex-col justify-between">
                         <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-[10px] font-bold text-accent-cyan uppercase tracking-tighter w-fit h-fit backdrop-blur-md">
