@@ -24,14 +24,6 @@ const projects = [
     type: "Agentes de IA",
     scale: 1.25,
   },
-  {
-    id: 3,
-    title: "OAK VIZ",
-    slug: "oak-viz",
-    category: "LANDING PAGE",
-    image: "/images/showcase/oak.png",
-    type: "Sites",
-  },
 ];
 
 const categories = [
