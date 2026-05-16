@@ -45,7 +45,7 @@ export default function Solutions() {
       "Desenvolvimento de aplicações e sistemas",
       "Decisão transparente: vamos ou não vamos?",
     ],
-    href: "/solucoes/personalizado",
+    href: "https://wa.me/5511994061379?text=Olá! Tenho um projeto sob medida e gostaria de conversar com a equipe da Aether Solutions.",
   };
 
   const containerVariants: Variants = {
@@ -114,7 +114,7 @@ export default function Solutions() {
             <motion.div key={idx} variants={itemVariants}>
               <Link 
                 href={sol.href}
-                className="relative p-8 md:p-12 pt-20 md:pt-32 pb-10 md:pb-16 rounded-[32px] md:rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-[#084B6E] flex flex-col items-center group hover:bg-white/[0.05] hover:border-[#0363F8]/30 hover:shadow-[0_0_60px_rgba(8,75,110,0.3)] hover:translate-y-3 transition-all duration-500 cursor-pointer shadow-[0_0_20px_rgba(8,75,110,0.1)] h-full"
+                className="relative p-6 md:p-10 pt-16 md:pt-24 pb-8 md:pb-12 rounded-[32px] md:rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-[#084B6E] flex flex-col items-center group hover:bg-white/[0.05] hover:border-[#0363F8]/30 hover:shadow-[0_0_60px_rgba(8,75,110,0.3)] hover:translate-y-3 transition-all duration-500 cursor-pointer shadow-[0_0_20px_rgba(8,75,110,0.1)] h-full"
               >
                 {/* Icon Box - Flush with the top internal edge */}
                 {/* Shape changed to a 'cube' (uniform square), smaller on mobile */}
@@ -126,8 +126,8 @@ export default function Solutions() {
                   {sol.icon}
                 </div>
 
-                <div className="text-center mb-6 md:mb-10">
-                  <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 uppercase tracking-wider group-hover:text-accent-cyan transition-colors">
+                <div className="text-center mb-6 md:mb-8">
+                  <h3 className="text-xl md:text-3xl font-bold text-white mb-3 md:mb-5 uppercase tracking-wider group-hover:text-accent-cyan transition-colors">
                     {sol.title}
                   </h3>
                   <p className="text-white/50 text-sm md:text-base font-light leading-relaxed max-w-sm mx-auto">
@@ -166,7 +166,7 @@ export default function Solutions() {
           <motion.div variants={itemVariants} className="w-full">
             <Link
               href={customSolution.href}
-              className="relative flex flex-col md:flex-row items-center gap-10 md:gap-16 p-8 md:p-12 rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-accent-cyan/5 to-[#0363F8]/10 backdrop-blur-xl border border-accent-cyan/20 group hover:border-accent-cyan/50 hover:shadow-[0_0_80px_rgba(0,242,255,0.15)] hover:translate-y-1 transition-all duration-500 cursor-pointer shadow-[0_0_30px_rgba(0,242,255,0.05)] overflow-hidden h-full"
+              className="relative flex flex-col md:flex-row items-center gap-8 md:gap-12 p-6 md:p-10 rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-accent-cyan/5 to-[#0363F8]/10 backdrop-blur-xl border border-accent-cyan/20 group hover:border-accent-cyan/50 hover:shadow-[0_0_80px_rgba(0,242,255,0.15)] hover:translate-y-1 transition-all duration-500 cursor-pointer shadow-[0_0_30px_rgba(0,242,255,0.05)] overflow-hidden h-full"
             >
               {/* Glow background decoration */}
               <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none group-hover:bg-accent-cyan/10 transition-all duration-700" />
@@ -177,7 +177,7 @@ export default function Solutions() {
                   <FiZap className="w-8 h-8 text-accent-cyan" />
                 </div>
                 <div className="text-accent-cyan text-[10px] font-bold tracking-widest uppercase mb-3">Solução Personalizada</div>
-                <h3 className="text-2xl md:text-4xl font-bold text-white uppercase tracking-wider mb-4 group-hover:text-accent-cyan transition-colors">
+                <h3 className="text-xl md:text-3xl font-bold text-white uppercase tracking-wider mb-4 group-hover:text-accent-cyan transition-colors">
                   {customSolution.title}
                 </h3>
                 <p className="text-white/70 text-sm md:text-base font-light leading-relaxed italic">

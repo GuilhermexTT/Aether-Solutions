@@ -108,7 +108,7 @@ export default function Showcase() {
   };
 
   return (
-    <section id="portfolio" className="relative py-24 min-h-[900px] overflow-hidden bg-[#020F22]">
+    <section id="portfolio" className="relative py-12 md:py-14 min-h-[600px] xl:min-h-[850px] overflow-hidden bg-[#020F22]">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
         style={{ 
@@ -128,7 +128,7 @@ export default function Showcase() {
               className="w-full flex flex-col items-center"
             >
               {/* Header Section */}
-              <div className="flex flex-col items-center text-center mb-16">
+              <div className="flex flex-col items-center text-center mb-8 md:mb-12">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +143,7 @@ export default function Showcase() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="text-4xl md:text-6xl font-bold text-white tracking-tight"
+                  className="text-2xl md:text-4xl font-bold text-white tracking-tight"
                 >
                   Projetos que <span className="text-accent-cyan drop-shadow-[0_0_15px_rgba(0,242,255,0.4)]">transformaram negócios</span>
                 </motion.h2>
@@ -190,7 +190,7 @@ export default function Showcase() {
               </div>
 
               {/* Desktop Carousel (Stacked) */}
-              <div className="hidden md:flex relative w-full max-w-[1600px] h-[750px] items-center justify-center mb-0 overflow-hidden">
+              <div className="hidden md:flex relative w-full max-w-[1600px] h-[350px] xl:h-[650px] items-center justify-center mb-0 overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false}>
                   {[-1, 0, 1].map((offset) => {
                     const index = (currentIndex + offset + projects.length) % projects.length;
@@ -204,13 +204,13 @@ export default function Showcase() {
                         animate={{ 
                           opacity: isCenter ? 1 : 0.4, 
                           scale: isCenter ? 1.1 : 0.85, 
-                          x: offset * 550,
+                          x: offset * (typeof window !== 'undefined' && window.innerWidth > 1400 ? 480 : 250),
                           zIndex: isCenter ? 30 : 10,
                           filter: isCenter ? "blur(0px)" : "blur(4px)"
                         }}
                         exit={{ opacity: 0, scale: 0.5, x: offset * 800 }}
                         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                        className="absolute w-[900px] h-[550px] rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism"
+                        className="absolute w-[400px] h-[250px] xl:w-[800px] xl:h-[480px] rounded-[24px] xl:rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism"
                         onClick={() => isCenter ? null : offset > 0 ? nextProject() : prevProject()}
                       >
                         <Image
@@ -226,12 +226,12 @@ export default function Showcase() {
                           <div className="absolute inset-0 border-2 border-accent-cyan/30 rounded-[40px] pointer-events-none shadow-[inset_0_0_80px_rgba(0,242,255,0.15)]" />
                         )}
 
-                        <div className={`absolute bottom-0 left-0 p-12 w-full transition-all duration-500 ${isCenter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                          <p className="text-accent-cyan text-xs font-bold tracking-[0.3em] mb-4 uppercase">{project.category}</p>
-                          <h3 className="text-5xl font-bold text-white mb-8 tracking-tight">{project.title}</h3>
+                        <div className={`absolute bottom-0 left-0 p-6 xl:p-12 w-full transition-all duration-500 ${isCenter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                          <p className="text-accent-cyan text-[8px] xl:text-xs font-bold tracking-[0.3em] mb-2 xl:mb-4 uppercase">{project.category}</p>
+                          <h3 className="text-xl xl:text-5xl font-bold text-white mb-4 xl:mb-8 tracking-tight">{project.title}</h3>
                           <Link
                             href={`/portfolio/${project.slug}`}
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#020F22] font-bold rounded-xl hover:bg-accent-cyan transition-colors"
+                            className="inline-flex items-center gap-2 px-6 py-3 xl:px-8 xl:py-4 bg-white text-[#020F22] text-xs xl:text-base font-bold rounded-xl hover:bg-accent-cyan transition-colors"
                           >
                             Ver projeto completo
                             <FiLayout />

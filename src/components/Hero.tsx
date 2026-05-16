@@ -27,7 +27,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="relative min-h-0 md:min-h-[90vh] flex items-center px-8 pt-32 pb-0 md:pb-20 overflow-hidden will-change-transform" 
+      className="relative min-h-0 md:min-h-[75vh] xl:min-h-[90vh] flex items-center px-8 pt-32 pb-0 md:pb-20 overflow-hidden will-change-transform" 
       style={{ transform: 'translateZ(0)', contain: 'paint' }}
     >
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
@@ -102,7 +102,7 @@ export default function Hero() {
             
             {/* High-Performance SVG Tech Portal Base */}
             <div 
-              className="absolute top-1/2 left-1/2 w-[350px] h-[350px] md:w-[650px] md:h-[650px] lg:w-[850px] lg:h-[850px] pointer-events-none mt-20 md:mt-40 will-change-transform"
+              className="absolute top-1/2 left-1/2 w-[350px] h-[350px] md:w-[500px] md:h-[500px] lg:w-[650px] lg:h-[650px] xl:w-[850px] xl:h-[850px] pointer-events-none mt-20 md:mt-32 xl:mt-40 will-change-transform"
               style={{ transform: 'translate(-50%, -50%) rotateX(75deg)', contain: 'strict' }}
             >
               {/* Glowing Aura on the "floor" - Optimized with radial gradient */}
@@ -169,7 +169,7 @@ export default function Hero() {
               initial={{ y: 0 }}
               animate={{ y: [-10, 10, -10] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[380px] md:h-[380px] lg:w-[500px] lg:h-[500px] z-20"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] xl:w-[500px] xl:h-[500px] z-20"
             >
               <Image 
                 src="/images/logo-principal.png" 
