@@ -152,7 +152,7 @@ export default function Showcase() {
               {/* Mobile Carousel (Horizontal Swipe) */}
               <div className="md:hidden flex gap-6 w-full px-4 mb-8 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pb-4">
                 {projects.map((project, idx) => (
-                  <div key={`mobile-${project.id}`} className="relative w-[85vw] flex-shrink-0 aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl snap-center">
+                  <div key={`mobile-${project.id}`} className="relative w-[92vw] flex-shrink-0 aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl snap-center">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -190,7 +190,7 @@ export default function Showcase() {
               </div>
 
               {/* Desktop Carousel (Stacked) */}
-              <div className="hidden md:flex relative w-full max-w-[1400px] h-[550px] items-center justify-center mb-0 overflow-hidden">
+              <div className="hidden md:flex relative w-full max-w-[1600px] h-[750px] items-center justify-center mb-0 overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false}>
                   {[-1, 0, 1].map((offset) => {
                     const index = (currentIndex + offset + projects.length) % projects.length;
@@ -204,13 +204,13 @@ export default function Showcase() {
                         animate={{ 
                           opacity: isCenter ? 1 : 0.4, 
                           scale: isCenter ? 1.1 : 0.85, 
-                          x: offset * 450,
+                          x: offset * 550,
                           zIndex: isCenter ? 30 : 10,
                           filter: isCenter ? "blur(0px)" : "blur(4px)"
                         }}
-                        exit={{ opacity: 0, scale: 0.5, x: offset * 600 }}
+                        exit={{ opacity: 0, scale: 0.5, x: offset * 800 }}
                         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                        className="absolute w-[600px] h-[400px] rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism"
+                        className="absolute w-[900px] h-[550px] rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism"
                         onClick={() => isCenter ? null : offset > 0 ? nextProject() : prevProject()}
                       >
                         <Image

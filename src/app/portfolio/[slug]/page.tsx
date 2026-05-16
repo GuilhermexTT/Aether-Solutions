@@ -224,7 +224,7 @@ export default function ProjectPage() {
                   ? "rounded-[2rem] md:rounded-[32px] border border-white/10" 
                   : "rounded-none md:rounded-none border-none"
               } ${
-                item.type === "video" && slug === "agentbot-ai" ? "max-w-[80%] mx-auto md:max-w-none shadow-2xl" : "w-full"
+                item.type === "video" && slug === "agentbot-ai" ? "w-full shadow-2xl" : "w-full"
               } ${item.span || ""}`}
             >
               {item.type === "video" ? (
@@ -234,6 +234,7 @@ export default function ProjectPage() {
                     poster={item.url.replace(".mp4", ".jpg")}
                     className={`w-full h-auto md:h-full ${slug === "agentbot-ai" ? "md:object-cover" : "md:object-contain"}`}
                     playsInline
+                    controls
                     muted
                     autoPlay
                     loop
@@ -260,109 +261,6 @@ export default function ProjectPage() {
           ))}
         </motion.div>
 
-        {/* Lightbox Component */}
-        <AnimatePresence>
-          {selectedMedia !== null && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-[200] bg-[#020F22] flex items-center justify-center p-4 md:p-12"
-              onClick={() => setSelectedMedia(null)}
-            >
-              <div className="relative w-full h-full flex flex-col items-center justify-center" onClick={(e) => e.stopPropagation()}>
-
-                {/* Media Container (With Swipe) */}
-                <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-                  <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                    <motion.div
-                      key={selectedMedia}
-                      custom={direction}
-                      variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      drag="x"
-                      dragConstraints={{ left: 0, right: 0 }}
-                      dragElastic={1}
-                      onDragEnd={(e, { offset, velocity }) => {
-                        const swipe = offset.x;
-                        if (swipe < -50) {
-                          nextMedia();
-                        } else if (swipe > 50) {
-                          prevMedia();
-                        }
-                      }}
-                      transition={{
-                        x: { type: "spring", stiffness: 300, damping: 30 },
-                        opacity: { duration: 0.2 }
-                      }}
-                      className="absolute inset-0 flex flex-col items-center justify-center p-6 md:p-20 lg:p-32 will-change-[opacity,transform] touch-none"
-                    >
-                      {project.gallery[selectedMedia!].type === "video" ? (
-                        <div 
-                          className={`relative max-h-[70vh] md:max-h-[80vh] w-auto overflow-hidden bg-black flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] ${
-                            slug === "agentbot-ai" ? "rounded-[3rem] border-[8px] border-white/20" : "rounded-2xl"
-                          }`}
-                          onPointerDown={(e) => e.stopPropagation()}
-                        >
-                          <video
-                            src={project.gallery[selectedMedia!].url}
-                            poster={project.gallery[selectedMedia!].url.replace(".mp4", ".jpg")}
-                            className="max-h-[70vh] md:max-h-[80vh] w-auto h-auto object-contain"
-                            autoPlay
-                            controls
-                            muted
-                            loop
-                            playsInline
-                          />
-                        </div>
-                      ) : (
-                        <div className="relative w-full h-full max-w-5xl flex items-center justify-center">
-                          <div className="relative w-full h-full max-h-[80vh]">
-                            <Image
-                              src={project.gallery[selectedMedia!].url}
-                              alt="Project media"
-                              fill
-                              className="object-contain"
-                              priority
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-                
-                {/* Navigation - Bottom Controls */}
-                <div className="flex items-center gap-6 mt-8 z-30">
-                  <button 
-                    onClick={prevMedia}
-                    className="p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all group"
-                  >
-                    <FiArrowLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
-                  </button>
-
-                  <button 
-                    onClick={() => setSelectedMedia(null)}
-                    className="px-8 py-3 rounded-full bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white/20 transition-all"
-                  >
-                    Fechar
-                  </button>
-
-                  <button 
-                    onClick={nextMedia}
-                    className="p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all group"
-                  >
-                    <FiArrowLeft size={24} className="rotate-180 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Final CTA */}
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="mt-32 p-12 rounded-[40px] bg-white/[0.02] backdrop-blur-xl border border-accent-cyan/30 text-center flex flex-col items-center gap-8 shadow-[0_0_50px_rgba(0,242,255,0.1)]">
@@ -379,6 +277,108 @@ export default function ProjectPage() {
           </div>
         </div>
       </motion.main>
+
+      {/* Lightbox Component - Escape stacking context */}
+      <AnimatePresence>
+        {selectedMedia !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[999] bg-[#020F22]/95 backdrop-blur-2xl flex items-center justify-center"
+            onClick={() => setSelectedMedia(null)}
+          >
+            <div className="relative w-full h-full flex flex-col items-center justify-center p-2 md:p-4" onClick={(e) => e.stopPropagation()}>
+
+              {/* Media Container (With Swipe) */}
+              <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                  <motion.div
+                    key={selectedMedia}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={(e, { offset, velocity }) => {
+                      const swipe = offset.x;
+                      if (swipe < -50) {
+                        nextMedia();
+                      } else if (swipe > 50) {
+                        prevMedia();
+                      }
+                    }}
+                    transition={{
+                      x: { type: "spring", stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.2 }
+                    }}
+                    className="absolute inset-0 flex flex-col items-center justify-center p-4 md:p-8 pt-12 md:pt-16 will-change-[opacity,transform] touch-none"
+                  >
+                    {project.gallery[selectedMedia!].type === "video" ? (
+                      <div 
+                        className={`relative max-h-[85vh] md:max-h-[92vh] w-auto bg-black flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden ${
+                          slug === "agentbot-ai" ? "rounded-[3rem] border-[4px] md:border-[8px] border-white/20 aspect-[9/19] md:aspect-auto" : "rounded-2xl"
+                        }`}
+                        onPointerDown={(e) => e.stopPropagation()}
+                      >
+                          <video
+                            src={project.gallery[selectedMedia!].url}
+                            poster={project.gallery[selectedMedia!].url.replace(".mp4", ".jpg")}
+                            className={`max-h-[85vh] md:max-h-[92vh] w-full h-full ${slug === "agentbot-ai" ? "object-cover md:object-contain" : "object-contain"}`}
+                            autoPlay
+                            controls
+                            loop
+                            playsInline
+                          />
+                      </div>
+                    ) : (
+                      <div className="relative w-full h-full max-w-5xl flex items-center justify-center">
+                        <div className="relative w-full h-full max-h-[85vh] md:max-h-[92vh]">
+                          <Image
+                            src={project.gallery[selectedMedia!].url}
+                            alt="Project media"
+                            fill
+                            className="object-contain"
+                            priority
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              {/* Navigation - Bottom Controls */}
+              <div className="flex items-center gap-6 mt-4 z-30 pb-6">
+                <button 
+                  onClick={prevMedia}
+                  className="p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all group"
+                >
+                  <FiArrowLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+                </button>
+
+                <button 
+                  onClick={() => setSelectedMedia(null)}
+                  className="px-8 py-3 rounded-full bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white/20 transition-all"
+                >
+                  Fechar
+                </button>
+
+                <button 
+                  onClick={nextMedia}
+                  className="p-4 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-accent-cyan hover:border-accent-cyan transition-all group"
+                >
+                  <FiArrowLeft size={24} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
