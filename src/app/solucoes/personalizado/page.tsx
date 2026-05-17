@@ -69,7 +69,7 @@ export default function PersonalizadoPage() {
             transition={{ duration: 0.5 }}
           >
             <Link
-              href="/"
+              href="/#solucoes"
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-[10px] font-bold tracking-widest text-accent-cyan uppercase mb-14 hover:bg-accent-cyan/20 transition-all"
             >
               ← Voltar para Home

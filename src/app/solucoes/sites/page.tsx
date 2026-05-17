@@ -12,7 +12,7 @@ export default function SitesPage() {
         {/* Hero Section of the page */}
         <div className="container mx-auto pb-12">
           <div className="max-w-4xl flex flex-col gap-8 md:gap-12">
-            <Link href="/" className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-[10px] font-bold tracking-widest text-accent-cyan uppercase w-fit hover:bg-accent-cyan/20 transition-all">
+            <Link href="/#solucoes" className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-[10px] font-bold tracking-widest text-accent-cyan uppercase w-fit hover:bg-accent-cyan/20 transition-all">
               ← Voltar para Home
             </Link>
             <div className="flex flex-col gap-6">

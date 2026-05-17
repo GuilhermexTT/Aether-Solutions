@@ -129,7 +129,7 @@ export default function ProjectPage() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           {/* Back Button */}
-          <Link href="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-bold tracking-widest text-white/50 uppercase mb-12 hover:bg-accent-cyan/20 hover:text-accent-cyan transition-all">
+          <Link href="/#portfolio" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-[10px] font-bold tracking-widest text-white/50 uppercase mb-12 hover:bg-accent-cyan/20 hover:text-accent-cyan transition-all">
             <FiArrowLeft /> Voltar para Home
           </Link>
         </div>

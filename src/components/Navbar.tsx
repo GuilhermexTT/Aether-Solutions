@@ -18,6 +18,29 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (pathname === "/" && typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash) {
+        const timer = setTimeout(() => {
+          const id = hash.replace("#", "");
+          const element = document.getElementById(id);
+          if (element) {
+            const offset = 100; // Espaço para o header fixo
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 300);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [pathname]);
+
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // Se não estiver na home, deixa o Link navegar normalmente
     if (pathname !== "/") return;

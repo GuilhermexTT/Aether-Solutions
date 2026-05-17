@@ -45,7 +45,7 @@ export default function Solutions() {
       "Desenvolvimento de aplicações e sistemas",
       "Decisão transparente: vamos ou não vamos?",
     ],
-    href: "https://wa.me/5511994061379?text=Olá! Tenho um projeto sob medida e gostaria de conversar com a equipe da Aether Solutions.",
+    href: "/solucoes/personalizado",
   };
 
   const containerVariants: Variants = {
