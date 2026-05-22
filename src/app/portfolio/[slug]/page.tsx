@@ -30,6 +30,7 @@ const projectData = {
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1777823424/7_b8o582.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1777823424/8_ajwsr9.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1777823425/9_x2chqj.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779487304/Gemini_Generated_Image_j9t1rnj9t1rnj9t1_vmyrll.png", span: "row-span-1" },
     ]
   },
   "agentbot-ai": {
@@ -49,6 +50,27 @@ const projectData = {
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897732/4_zhaxdi.jpg", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897732/5_fbghzf.jpg", span: "md:col-span-2 row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778897733/6_ppbvmw.jpg", span: "row-span-1" }
+    ]
+  },
+  "oak-viz": {
+    title: "OAK VIZ",
+    category: "Landing Page & Fotografia",
+    description: "Galeria e portfólio digital premium criado para a OAK VIZ, destacando produções audiovisuais e fotográficas com transições fluidas e carregamento otimizado de mídias de altíssima definição.",
+    client: "OAK VIZ",
+    year: "2026",
+    liveUrl: "https://oak-viz.vercel.app/",
+    buttonText: "Veja o portfólio ao vivo",
+    services: ["Web Design", "Galeria de Mídia", "Otimização de Performance"],
+    gallery: [
+      { type: "video", url: "https://res.cloudinary.com/drsv0whjm/video/upload/v1779486401/OakVizOficialll_opt4ro.mp4", span: "md:col-span-2 md:row-span-2" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_173629_wn5shb.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_183421_qzxnfa.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183433_vlfwju.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183446_c9eovr.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183555_t0hzp9.png", span: "md:col-span-2 row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_173639_znkugq.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_183504_ski7u7.png", span: "row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183538_x5mub9.png", span: "row-span-1" }
     ]
   }
 };

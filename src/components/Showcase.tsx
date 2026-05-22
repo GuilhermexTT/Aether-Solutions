@@ -24,6 +24,14 @@ const projects = [
     type: "Agentes de IA",
     scale: 1.25,
   },
+  {
+    id: 3,
+    title: "OAK VIZ",
+    slug: "oak-viz",
+    category: "SITE PREMIUM",
+    image: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_173629_wn5shb.png",
+    type: "Sites",
+  },
 ];
 
 const categories = [
