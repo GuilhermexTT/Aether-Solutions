@@ -67,7 +67,7 @@ const projectData = {
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_183421_qzxnfa.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183433_vlfwju.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183446_c9eovr.png", span: "row-span-1" },
-      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183555_t0hzp9.png", span: "md:col-span-2 row-span-1" },
+      { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183555_t0hzp9.png", span: "md:col-span-3 row-span-1", aspect: "aspect-[19/3] md:aspect-[19/3]" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_173639_znkugq.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_183504_ski7u7.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183538_x5mub9.png", span: "row-span-1" }
@@ -268,7 +268,9 @@ export default function ProjectPage() {
                   </div>
                 </div>
               ) : (
-                <div className={`relative w-full ${slug === "agentbot-ai" ? "aspect-[4/3] md:h-full" : "aspect-video md:aspect-[16/9]"}`}>
+                <div className={`relative w-full ${
+                  (item as { aspect?: string }).aspect ? (item as { aspect?: string }).aspect : (slug === "agentbot-ai" ? "aspect-[4/3] md:h-full" : "aspect-video md:aspect-[16/9]")
+                }`}>
                   <Image 
                     src={item.url} 
                     alt={`${project.title} gallery ${idx}`}
