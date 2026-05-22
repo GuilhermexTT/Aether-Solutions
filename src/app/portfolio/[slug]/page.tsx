@@ -58,7 +58,7 @@ const projectData = {
     description: "Galeria e portfólio digital premium criado para a OAK VIZ, destacando produções audiovisuais e fotográficas com transições fluidas e carregamento otimizado de mídias de altíssima definição.",
     client: "OAK VIZ",
     year: "2026",
-    liveUrl: "https://oak-viz.vercel.app/",
+    liveUrl: "https://oakviz.vercel.app/",
     buttonText: "Veja o portfólio ao vivo",
     services: ["Web Design", "Galeria de Mídia", "Otimização de Performance"],
     gallery: [
