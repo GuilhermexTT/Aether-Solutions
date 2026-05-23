@@ -26,7 +26,7 @@ export default function TermsOfUse() {
         <div className="bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[40px] p-8 md:p-16 text-white/70 font-light leading-relaxed space-y-12">
           <section>
             <p>
-              Seja bem-vindo ao site da nossa agência. Estes Termos de Uso regem o acesso e a utilização dos serviços e conteúdos oferecidos por <strong>66.696.773 GUILHERME CARDOSO DE CARVALHO</strong>, doravante denominada apenas como "Agência".
+              Seja bem-vindo ao site da nossa agência. Estes Termos de Uso regem o acesso e a utilização dos serviços e conteúdos oferecidos por <strong>66.696.773 GUILHERME CARDOSO DE CARVALHO</strong>, doravante denominada apenas como &quot;Agência&quot;.
             </p>
           </section>
 

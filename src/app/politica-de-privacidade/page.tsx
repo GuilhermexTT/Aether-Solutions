@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
         <div className="bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[40px] p-8 md:p-16 text-white/70 font-light leading-relaxed space-y-12">
           <section>
             <p>
-              Esta Política de Privacidade descreve como a <strong>66.696.773 GUILHERME CARDOSO DE CARVALHO</strong> ("Agência") coleta, usa e protege as informações pessoais de usuários que acessam nosso site ou utilizam nossos serviços de tecnologia e automação.
+              Esta Política de Privacidade descreve como a <strong>66.696.773 GUILHERME CARDOSO DE CARVALHO</strong> (&quot;Agência&quot;) coleta, usa e protege as informações pessoais de usuários que acessam nosso site ou utilizam nossos serviços de tecnologia e automação.
             </p>
           </section>
 
