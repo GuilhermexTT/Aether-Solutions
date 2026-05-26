@@ -77,6 +77,27 @@ export default function RootLayout({
             gtag('config', 'AW-18189285029');
           `}
         </Script>
+        <Script id="google-conversion-snippet" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-18189285029/4xdACJn2pbMcEKXtqeFD',
+                    'value': 1.0,
+                    'currency': 'BRL',
+                    'event_callback': callback
+                });
+              }
+              return false;
+            }
+            window.gtag_report_conversion = gtag_report_conversion;
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col font-sans">
         {children}
