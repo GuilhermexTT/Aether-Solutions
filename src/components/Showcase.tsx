@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -47,6 +47,16 @@ export default function Showcase() {
   const [activeCategory, setActiveCategory] = useState("Todos");
 
   const [direction, setDirection] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 1400);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const nextProject = () => {
     setDirection(1);
@@ -204,7 +214,7 @@ export default function Showcase() {
                         animate={{ 
                           opacity: isCenter ? 1 : 0.4, 
                           scale: isCenter ? 1.1 : 0.85, 
-                          x: offset * (typeof window !== 'undefined' && window.innerWidth > 1400 ? 480 : 250),
+                          x: offset * (isLargeScreen ? 480 : 250),
                           zIndex: isCenter ? 30 : 10,
                           filter: isCenter ? "blur(0px)" : "blur(4px)"
                         }}

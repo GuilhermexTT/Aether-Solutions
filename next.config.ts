@@ -37,6 +37,9 @@ const nextConfig: NextConfig = {
 
   // 4. Injeção de Cabeçalhos HTTP de Segurança
   async headers() {
+    if (process.env.NODE_ENV !== "production") {
+      return [];
+    }
     return [
       {
         source: "/(.*)",

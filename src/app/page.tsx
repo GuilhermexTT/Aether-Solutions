@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Showcase from "@/components/Showcase";
+import AetherHub from "@/components/AetherHub";
 import Solutions from "@/components/Solutions";
 
 const About = dynamic(() => import("@/components/About"), { ssr: true });
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <Showcase />
+        <AetherHub />
         <Solutions />
         <About />
         <FAQ />

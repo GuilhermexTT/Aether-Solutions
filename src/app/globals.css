@@ -163,3 +163,35 @@ body {
   will-change: transform, opacity;
   pointer-events: none;
 }
+
+@keyframes aurora-1 {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.08;
+  }
+  50% {
+    transform: scale(1.15) translate(40px, -30px);
+    opacity: 0.14;
+  }
+}
+
+@keyframes aurora-2 {
+  0%, 100% {
+    transform: scale(1.15) translate(0px, 0px);
+    opacity: 0.05;
+  }
+  50% {
+    transform: scale(1) translate(-40px, 30px);
+    opacity: 0.12;
+  }
+}
+
+.animate-aurora-1 {
+  animation: aurora-1 15s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-aurora-2 {
+  animation: aurora-2 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
