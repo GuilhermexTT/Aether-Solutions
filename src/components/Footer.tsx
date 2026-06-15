@@ -82,6 +82,16 @@ export default function Footer() {
                   Portfólio de Projetos
                 </Link>
               </li>
+              <li>
+                <Link 
+                  href="/#aether-hub" 
+                  onClick={(e) => handleSmoothScroll(e, "/#aether-hub")}
+                  className="text-white/40 text-sm font-light hover:text-accent-cyan transition-all duration-300 flex items-center gap-2 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/20 group-hover:bg-accent-cyan transition-colors" />
+                  Plataforma Aether Hub
+                </Link>
+              </li>
             </ul>
           </div>
 

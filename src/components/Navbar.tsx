@@ -74,6 +74,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Produto", href: "/#portfolio" },
     { name: "Soluções", href: "/#solucoes" },
+    { name: "Aether Hub", href: "/#aether-hub" },
     { name: "Dúvidas", href: "/#faq" },
     { name: "Sobre nós", href: "/#sobre" },
   ];

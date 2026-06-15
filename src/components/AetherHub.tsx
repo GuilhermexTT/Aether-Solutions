@@ -40,13 +40,13 @@ export default function AetherHub() {
   ];
 
   return (
-    <section className="relative py-12 px-4 md:px-8 bg-[#020F22] overflow-hidden">
+    <section id="aether-hub" className="relative py-12 px-4 md:px-8 bg-[#020F22] overflow-hidden">
       {/* 1. Subtle High-Tech Grid Over the Whole Section */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,242,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,242,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
 
-      {/* 2. Interactive/Pulsating Aurora Background Glows (GPU Accelerated CSS) */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#0363F8] to-accent-cyan blur-[130px] pointer-events-none z-0 animate-aurora-1" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-accent-cyan to-[#0363F8] blur-[120px] pointer-events-none z-0 animate-aurora-2" />
+      {/* 2. Interactive/Pulsating Aurora Background Glows (GPU Accelerated CSS - Optimized) */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(3,99,248,0.14)_0%,rgba(0,242,255,0.04)_40%,transparent_70%)] pointer-events-none z-0 animate-aurora-1" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.12)_0%,rgba(3,99,248,0.03)_40%,transparent_70%)] pointer-events-none z-0 animate-aurora-2" />
 
       {/* 3. Tech Rings rotating behind the card */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-accent-cyan/5 pointer-events-none z-0 animate-spin-slow hidden lg:block" />
@@ -72,7 +72,7 @@ export default function AetherHub() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#031127]/95 via-[#051C3E]/90 to-[#010915]/98 border border-white/10 p-6 md:p-10 lg:p-14 overflow-hidden shadow-[0_0_80px_rgba(3,99,248,0.15)] group-hover:border-accent-cyan/20 transition-all duration-700 backdrop-blur-md will-change-transform"
+            className="relative rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#031127]/95 via-[#051C3E]/90 to-[#010915]/98 border border-white/10 p-6 md:p-10 lg:p-14 overflow-hidden shadow-[0_0_80px_rgba(3,99,248,0.15)] group-hover:border-accent-cyan/20 transition-all duration-700 will-change-transform"
           >
             {/* Subtle grid background inside the card */}
             <div className="absolute inset-0 opacity-[0.07] pointer-events-none" 
@@ -157,11 +157,11 @@ export default function AetherHub() {
 
             {/* Right Content - Isometric Tablet (Grid: 7 columns) */}
             <div className="lg:col-span-7 flex flex-col items-center lg:items-end justify-center relative">
-              {/* Backing Ambient Light Aura specifically for the tablet */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-to-br from-[#0363F8]/25 via-accent-cyan/15 to-transparent rounded-full blur-[70px] pointer-events-none z-0 mix-blend-screen" />
+              {/* Backing Ambient Light Aura specifically for the tablet (Optimized Radial Gradient) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[radial-gradient(circle_at_center,rgba(3,99,248,0.25)_0%,rgba(0,242,255,0.1)_45%,transparent_70%)] rounded-full pointer-events-none z-0 mix-blend-screen" />
               
-              {/* Extra radial spotlight glow right behind the tablet */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-accent-cyan/20 rounded-full blur-[50px] pointer-events-none z-0 animate-pulse-glow" />
+              {/* Extra radial spotlight glow right behind the tablet (Optimized Radial Gradient) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.25)_0%,transparent_60%)] rounded-full pointer-events-none z-0 animate-pulse-glow" />
 
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
