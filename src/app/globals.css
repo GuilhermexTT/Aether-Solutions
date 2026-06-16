@@ -195,3 +195,18 @@ body {
   animation: aurora-2 18s ease-in-out infinite;
   will-change: transform, opacity;
 }
+
+@keyframes pulse-glow-mobile {
+  0%, 100% { 
+    opacity: 0.45;
+  }
+  50% { 
+    opacity: 0.75;
+  }
+}
+
+.animate-pulse-glow-mobile {
+  animation: pulse-glow-mobile 4s ease-in-out infinite;
+  will-change: opacity;
+}
+
