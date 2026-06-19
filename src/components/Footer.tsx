@@ -32,13 +32,13 @@ export default function Footer() {
       <div className="container mx-auto px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Logo Column */}
-          <div className="flex flex-col gap-8">
-            <Link href="/" className="relative h-12 w-44">
+          <div className="flex flex-col gap-4">
+            <Link href="/" className="relative h-24 w-80 -ml-2">
               <Image 
-                src="/logo-footer.png" 
-                alt="Aether Solutions Logo" 
+                src="/logo-footer-adisea.png" 
+                alt="Adisea Logo" 
                 fill 
-                className="object-contain"
+                className="object-contain object-left"
               />
             </Link>
             <p className="text-white/40 text-sm font-light leading-relaxed max-w-[280px]">
@@ -89,7 +89,7 @@ export default function Footer() {
                   className="text-white/40 text-sm font-light hover:text-accent-cyan transition-all duration-300 flex items-center gap-2 group"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan/20 group-hover:bg-accent-cyan transition-colors" />
-                  Plataforma Aether Hub
+                  Plataforma Adisea Hub
                 </Link>
               </li>
             </ul>
@@ -97,7 +97,7 @@ export default function Footer() {
 
           {/* Links Column 2: Empresa */}
           <div className="flex flex-col gap-8">
-            <h4 className="text-white text-base font-bold tracking-tight uppercase">Aether Solutions</h4>
+            <h4 className="text-white text-base font-bold tracking-tight uppercase">Adisea</h4>
             <ul className="flex flex-col gap-5">
               <li>
                 <Link 
@@ -134,7 +134,7 @@ export default function Footer() {
             <h4 className="text-white text-base font-bold tracking-tight uppercase">Contato Direto</h4>
             <div className="flex flex-col gap-6">
               <Link 
-                href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions." 
+                href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Adisea." 
                 target="_blank"
                 className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-white font-medium text-sm flex items-center justify-center gap-3 hover:bg-accent-cyan/10 hover:border-accent-cyan transition-all duration-500 group shadow-lg"
               >
@@ -152,7 +152,7 @@ export default function Footer() {
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2">
             <p className="text-white/20 text-[10px] tracking-widest uppercase font-bold">
-              © 2026 Aether Solutions. Todos os direitos reservados.
+              © 2026 Adisea. Todos os direitos reservados.
             </p>
           </div>
           

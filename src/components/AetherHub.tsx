@@ -160,7 +160,7 @@ export default function AetherHub() {
                   variants={itemLeftVariants}
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-[10px] md:text-xs font-bold tracking-[0.25em] text-accent-cyan uppercase mb-6"
                 >
-                  <FiLayers className="text-xs md:text-sm" /> ECOSSISTEMA AETHER
+                  <FiLayers className="text-xs md:text-sm" /> ECOSSISTEMA ADISEA
                 </motion.div>
 
                 {/* Heading */}
@@ -168,7 +168,7 @@ export default function AetherHub() {
                   variants={itemUpVariants}
                   className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6"
                 >
-                  Conheça o <span className="bg-gradient-to-r from-accent-cyan via-[#00d1ff] to-[#0363F8] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,255,0.2)]">Aether Hub</span>
+                  Conheça o <span className="bg-gradient-to-r from-accent-cyan via-[#00d1ff] to-[#0363F8] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,255,0.2)]">Adisea Hub</span>
                 </motion.h2>
 
                 {/* Subheading */}
@@ -204,7 +204,7 @@ export default function AetherHub() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm md:text-base shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group"
                   >
-                    Acessar Aether Hub
+                    Acessar Adisea Hub
                     <span className="text-lg transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </a>
                 </motion.div>
@@ -225,7 +225,7 @@ export default function AetherHub() {
                 >
                   <Image
                     src="/images/aether-hub-dashboard-v3.png"
-                    alt="Aether Hub Dashboard"
+                    alt="Adisea Hub Dashboard"
                     fill
                     sizes="(max-width: 640px) 340px, (max-width: 768px) 500px, (max-width: 1024px) 600px, (max-width: 1280px) 640px, 740px"
                     priority
@@ -245,7 +245,7 @@ export default function AetherHub() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group"
                   >
-                    Acessar Aether Hub
+                    Acessar Adisea Hub
                     <span className="text-lg transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </a>
                 </motion.div>

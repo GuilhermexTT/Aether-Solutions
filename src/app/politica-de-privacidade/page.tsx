@@ -164,7 +164,7 @@ export default function PrivacyPolicy() {
 
         {/* Footer in Page */}
         <div className="mt-16 text-center">
-          <p className="text-white/20 text-xs uppercase tracking-widest">© 2026 Aether Solutions • LGPD Compliance</p>
+          <p className="text-white/20 text-xs uppercase tracking-widest">© 2026 Adisea • LGPD Compliance</p>
         </div>
       </div>
     </main>

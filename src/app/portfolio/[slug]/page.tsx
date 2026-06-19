@@ -291,7 +291,7 @@ export default function ProjectPage() {
           <h3 className="text-3xl md:text-5xl font-bold tracking-tight">Gostou deste <span className="text-accent-cyan">resultado?</span></h3>
           <p className="text-white/50 max-w-xl font-light">Podemos criar algo tão impactante quanto este projeto para o seu negócio. Vamos conversar hoje mesmo.</p>
           <Link 
-            href="https://wa.me/5511994061379?text=Olá! Gostaria de iniciar um novo projeto com a Aether Solutions." 
+            href="https://wa.me/5511994061379?text=Olá! Gostaria de iniciar um novo projeto com a Adisea." 
             target="_blank"
             className="px-10 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] transition-all flex items-center gap-2 hover:scale-105"
           >

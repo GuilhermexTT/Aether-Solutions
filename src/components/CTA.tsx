@@ -40,12 +40,12 @@ export default function CTA() {
           className="text-4xl md:text-6xl font-semibold text-white mb-12 leading-tight tracking-tight max-w-4xl"
         >
           O futuro não espera. <br />
-          <span className="text-white">Construa com a Aether.</span>
+          <span className="text-white">Construa com a Adisea.</span>
         </motion.h2>
 
         {/* Centralized Button */}
         <Link 
-          href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions e iniciar meu projeto." 
+          href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Adisea e iniciar meu projeto." 
           target="_blank"
         >
           <motion.button 

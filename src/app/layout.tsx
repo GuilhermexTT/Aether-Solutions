@@ -14,32 +14,32 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://aethersolutions.com.br'),
   title: {
-    default: "Aether Solutions | IA para um Futuro Inteligente",
-    template: "%s | Aether Solutions"
+    default: "Adisea | IA para um Futuro Inteligente",
+    template: "%s | Adisea"
   },
-  description: "Aether Solutions constrói a infraestrutura de IA mais avançada do planeta para empresas que desejam escalar sem limites. Criação de sites premium e Agentes de IA.",
+  description: "Adisea constrói a infraestrutura de IA mais avançada do planeta para empresas que desejam escalar sem limites. Criação de sites premium e Agentes de IA.",
   keywords: ["Inteligência Artificial", "Criação de Sites", "Agentes WhatsApp", "Automação", "Desenvolvimento Web", "Design Premium"],
-  authors: [{ name: "Aether Solutions" }],
-  creator: "Aether Solutions",
+  authors: [{ name: "Adisea" }],
+  creator: "Adisea",
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: "https://aethersolutions.com.br",
-    title: "Aether Solutions | Inovação em IA e Web",
+    title: "Adisea | Inovação em IA e Web",
     description: "Infraestrutura de IA e Sites Premium para transformar seu negócio.",
-    siteName: "Aether Solutions",
+    siteName: "Adisea",
     images: [
       {
         url: "/images/logo-principal.png", // Usando o logo principal como fallback de compartilhamento
         width: 1200,
         height: 630,
-        alt: "Aether Solutions - IA para um Futuro Inteligente",
+        alt: "Adisea - IA para um Futuro Inteligente",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aether Solutions | Inovação em IA",
+    title: "Adisea | Inovação em IA",
     description: "Infraestrutura de IA e Sites Premium para escalar sem limites.",
     images: ["/images/logo-principal.png"],
   },

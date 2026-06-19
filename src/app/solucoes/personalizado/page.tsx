@@ -224,7 +224,7 @@ export default function PersonalizadoPage() {
                 O diagnóstico inicial é gratuito e sem compromisso. A pior resposta que você pode receber é um &ldquo;não&rdquo; — e isso já vale muito.
               </p>
               <a
-                href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20tenho%20um%20problema%20que%20gostaria%20de%20discutir%20com%20a%20Aether%20Solutions"
+                href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20tenho%20um%20problema%20que%20gostaria%20de%20discutir%20com%20a%20Adisea"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-accent-cyan text-[#020F22] font-bold text-sm uppercase tracking-widest shadow-[0_0_30px_rgba(0,242,255,0.4)] hover:shadow-[0_0_50px_rgba(0,242,255,0.6)] hover:scale-105 transition-all duration-300"

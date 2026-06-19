@@ -56,7 +56,7 @@ export default function About() {
           className="flex flex-col gap-8"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#084B6E] bg-accent-cyan/5 text-[10px] font-medium text-white/80 w-fit uppercase tracking-widest shadow-[0_0_15px_rgba(8,75,110,0.2)]">
-            <FiUsers className="text-xs text-accent-cyan" /> Sobre a Aether Solutions
+            <FiUsers className="text-xs text-accent-cyan" /> Sobre a Adisea
           </div>
 
           <h2 className="text-4xl lg:text-5xl font-light leading-tight text-white">
@@ -68,7 +68,7 @@ export default function About() {
 
           <div className="flex flex-col gap-6 text-white/50 font-light text-lg leading-relaxed text-justify">
             <p>
-              A <span className="text-white font-normal">Aether Solutions</span>{" "} não nasceu apenas para criar sites, mas para construir a infraestrutura onde o futuro dos negócios acontece. O nome &quot;Aether&quot; remete ao que é fundamental e invisível, mas que sustenta tudo ao seu redor. É exatamente assim que enxergamos a tecnologia uma base invisível, porém poderosa, que impulsiona o crescimento humano e empresarial.
+              A <span className="text-white font-normal">Adisea</span>{" "} não nasceu apenas para criar sites, mas para construir a infraestrutura onde o futuro dos negócios acontece. O nome &quot;Adisea&quot; une a ideia de adição e oceano, remetendo à profundidade e à expansão contínua de possibilidades. É exatamente assim que enxergamos a tecnologia — um oceano profundo e poderoso de inovação que impulsiona o crescimento humano e empresarial.
             </p>
             <p>
               Nossa missão é simples, automatizar o atendimento para que empreendedores possam focar no que realmente importa crescer seus negócios. Com nossa tecnologia, você nunca mais perde um lead.

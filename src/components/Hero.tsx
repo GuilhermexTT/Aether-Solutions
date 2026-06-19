@@ -64,7 +64,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-lg text-white/50 font-light leading-relaxed max-w-lg"
           >
-            Aether Solutions constrói a infraestrutura de IA mais avançada do planeta para empresas que desejam escalar sem limites.
+            Adisea constrói a infraestrutura de IA mais avançada do planeta para empresas que desejam escalar sem limites.
           </motion.p>
           
           <motion.div 
@@ -74,7 +74,7 @@ export default function Hero() {
             className="flex flex-wrap gap-4 mt-4"
           >
             <Link 
-              href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Aether Solutions." 
+              href="https://wa.me/5511994061379?text=Olá, gostaria de falar com um especialista da Adisea." 
               target="_blank"
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#0363F8] to-[#20A2F8] text-white font-bold shadow-[0_0_15px_rgba(3,99,248,0.3)] hover:shadow-[0_0_25px_rgba(3,99,248,0.5)] transition-all flex items-center gap-2"
             >
@@ -173,7 +173,7 @@ export default function Hero() {
             >
               <Image 
                 src="/images/logo-principal.png" 
-                alt="Aether Solutions Logo" 
+                alt="Adisea Logo" 
                 fill
                 className="object-contain brightness-110 neon-glow"
                 priority
