@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aethersolutions.com.br';
+  const baseUrl = 'https://adisea.com.br';
 
   // Páginas estáticas principais
   const routes = [

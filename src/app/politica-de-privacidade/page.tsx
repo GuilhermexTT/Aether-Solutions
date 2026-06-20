@@ -153,10 +153,10 @@ export default function PrivacyPolicy() {
               <p className="mb-4 text-white font-medium text-lg">Dúvidas sobre seus dados?</p>
               <p className="mb-6">Para exercer seus direitos ou tirar dúvidas sobre como tratamos seus dados, entre em contato através do nosso canal oficial:</p>
               <a 
-                href="mailto:contato@aethersolutions.com.br" 
+                href="mailto:contato@adisea.com.br" 
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan font-bold hover:bg-accent-cyan/20 transition-all"
               >
-                contato@aethersolutions.com.br
+                contato@adisea.com.br
               </a>
             </div>
           </section>

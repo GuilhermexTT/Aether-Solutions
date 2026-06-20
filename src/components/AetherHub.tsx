@@ -84,10 +84,10 @@ export default function AetherHub() {
   }, []);
 
   const checkItems = [
-    "Sistemas e ferramentas proprietárias",
-    "Automação e inteligência operacional",
-    "Soluções para alta performance",
-    "Atualizações constantes e suporte dedicado"
+    "Sites ultra conversivos de altíssimo padrão",
+    "Atendentes inteligentes de WhatsApp com IA (24/7)",
+    "Sistemas sob medida para gerenciar sua empresa",
+    "Suporte dedicado e atualizações constantes"
   ];
 
   const bottomBenefits = [
@@ -168,7 +168,7 @@ export default function AetherHub() {
                   variants={itemUpVariants}
                   className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6"
                 >
-                  Conheça o <span className="bg-gradient-to-r from-accent-cyan via-[#00d1ff] to-[#0363F8] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,255,0.2)]">Adisea Hub</span>
+                  Conheça os <span className="bg-gradient-to-r from-accent-cyan via-[#00d1ff] to-[#0363F8] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,255,0.2)]">nossos produtos</span>
                 </motion.h2>
 
                 {/* Subheading */}
@@ -196,17 +196,20 @@ export default function AetherHub() {
                 {/* Action CTA Button (Desktop only) */}
                 <motion.div
                   variants={itemUpVariants}
-                  className="hidden lg:block"
+                  className="hidden lg:flex items-center gap-6"
                 >
                   <a
-                    href="https://hub.aethersolutions.com.br"
+                    href="https://hub.adisea.com.br"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm md:text-base shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group"
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm md:text-base shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group flex-shrink-0"
                   >
                     Acessar Adisea Hub
                     <span className="text-lg transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </a>
+                  <span className="text-xs text-white/50 font-light leading-relaxed max-w-[200px]">
+                    Explore nossa vitrine de produtos, agentes de IA e soluções prontas para compra.
+                  </span>
                 </motion.div>
               </div>
 
@@ -237,10 +240,10 @@ export default function AetherHub() {
                 {/* Action CTA Button (Mobile only) */}
                 <motion.div
                   variants={itemUpVariants}
-                  className="mt-8 lg:hidden z-20"
+                  className="mt-8 lg:hidden z-20 flex flex-col items-center gap-3"
                 >
                   <a
-                    href="https://hub.aethersolutions.com.br"
+                    href="https://hub.adisea.com.br"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group"
@@ -248,6 +251,9 @@ export default function AetherHub() {
                     Acessar Adisea Hub
                     <span className="text-lg transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </a>
+                  <span className="text-[11px] text-white/50 font-light text-center max-w-[260px]">
+                    Explore nossa vitrine de produtos, agentes de IA e soluções prontas para compra.
+                  </span>
                 </motion.div>
               </div>
             </div>

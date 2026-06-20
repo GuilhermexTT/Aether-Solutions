@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://aethersolutions.com.br/sitemap.xml',
+    sitemap: 'https://adisea.com.br/sitemap.xml',
   };
 }

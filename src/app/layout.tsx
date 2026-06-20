@@ -12,7 +12,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aethersolutions.com.br'),
+  metadataBase: new URL('https://adisea.com.br'),
   title: {
     default: "Adisea | IA para um Futuro Inteligente",
     template: "%s | Adisea"
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://aethersolutions.com.br",
+    url: "https://adisea.com.br",
     title: "Adisea | Inovação em IA e Web",
     description: "Infraestrutura de IA e Sites Premium para transformar seu negócio.",
     siteName: "Adisea",
