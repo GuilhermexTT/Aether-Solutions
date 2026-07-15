@@ -91,7 +91,7 @@ export default function Navbar() {
         <Link 
           href="/" 
           onClick={(e) => handleSmoothScroll(e, "/")}
-          className="relative h-16 w-56 md:h-24 md:w-80 -ml-2 md:-ml-3 group transition-transform duration-300 hover:scale-105"
+          className="relative h-8 w-28 md:h-12 md:w-40 -ml-2 md:-ml-3 group transition-transform duration-300 hover:scale-105"
         >
           <Image 
             src="/logo-marca-adisea.png" 
