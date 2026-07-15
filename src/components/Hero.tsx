@@ -53,9 +53,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-5xl lg:text-7xl font-light leading-tight tracking-tight text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
           >
-            Infraestrutura <br />
-            de IA para <br />
-            <span className="font-normal">transformar o <br /> mundo.</span>
+            Construindo a <br />
+            próxima fase <br />
+            <span className="font-normal">da sua empresa.</span>
           </motion.h1>
           
           <motion.p 
@@ -64,7 +64,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-lg text-white/50 font-light leading-relaxed max-w-lg"
           >
-            Adisea constrói a infraestrutura de IA mais avançada do planeta para empresas que desejam escalar sem limites.
+            Desenvolvemos sites, sistemas, automações e soluções inteligentes para empresas que querem crescer com tecnologia.
           </motion.p>
           
           <motion.div 

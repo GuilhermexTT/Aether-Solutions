@@ -4,14 +4,19 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiChevronLeft, FiChevronRight, FiStar, FiLayout } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiStar, FiLayout, FiTrendingUp } from "react-icons/fi";
 
 const projects = [
   {
     id: 1,
     title: "Dra Thaina Carvalho",
     slug: "taina-estetica",
-    category: "SITE PREMIUM",
+    category: "Site Premium",
+    segment: "Clínica de Estética",
+    solution: "Site Premium & Branding",
+    features: ["Design de Luxo", "SEO Integrado", "Agendamento Online", "Performance de Elite"],
+    result: "+210% em Conversões",
+    ctaText: "Ver estudo de caso",
     image: "/images/showcase/doutora.png",
     type: "Sites",
   },
@@ -19,7 +24,12 @@ const projects = [
     id: 2,
     title: "AgentBot AI",
     slug: "agentbot-ai",
-    category: "AGENTE WHATSAPP",
+    category: "Agente de IA",
+    segment: "Atendimento & Vendas",
+    solution: "Agente Inteligente de WhatsApp",
+    features: ["Inteligência Artificial", "Integração WhatsApp API", "Fluxos Personalizados", "Suporte 24/7 Autônomo"],
+    result: "Redução de Fila em 80%",
+    ctaText: "Como desenvolvemos",
     image: "https://res.cloudinary.com/drsv0whjm/image/upload/v1778900000/capaai_npclxn.jpg",
     type: "Agentes de IA",
     scale: 1.25,
@@ -28,8 +38,13 @@ const projects = [
     id: 3,
     title: "OAK VIZ",
     slug: "oak-viz",
-    category: "SITE PREMIUM",
-    image: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_173629_wn5shb.png",
+    category: "Site Premium",
+    segment: "Produção Audiovisual",
+    solution: "Galeria de Mídia Imersiva",
+    features: ["Design Cinematográfico", "Mídia de Alta Definição", "Carregamento Otimizado", "SEO Avançado"],
+    result: "Carregamento sob 0.8s",
+    ctaText: "Conheça esse projeto",
+    image: "/images/showcase/oak.png",
     type: "Sites",
   },
 ];
@@ -38,7 +53,6 @@ const categories = [
   { name: "Todos os Projetos", filter: "Todos" },
   { name: "Sites", filter: "Sites" },
   { name: "Agentes de IA", filter: "Agentes de IA" },
-  { name: "Dashboards", filter: "Dashboards" },
 ];
 
 export default function Showcase() {
@@ -118,7 +132,7 @@ export default function Showcase() {
   };
 
   return (
-    <section id="portfolio" className="relative py-12 md:py-14 min-h-[600px] xl:min-h-[850px] overflow-hidden bg-[#020F22]">
+    <section id="portfolio" className="relative py-16 md:py-20 overflow-hidden bg-[#020F22]">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
         style={{ 
@@ -153,38 +167,101 @@ export default function Showcase() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="text-2xl md:text-4xl font-bold text-white tracking-tight"
+                  className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-4"
                 >
                   Projetos que <span className="text-accent-cyan drop-shadow-[0_0_15px_rgba(0,242,255,0.4)]">transformaram negócios</span>
                 </motion.h2>
+
+                {/* Trust Indicators / Authority Row */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-[9px] md:text-xs font-semibold uppercase tracking-[0.2em] text-white/50"
+                >
+                  <span className="flex items-center gap-1.5"><span className="text-emerald-400">📈</span> Foco em Conversão</span>
+                  <span className="text-white/20 hidden sm:inline">•</span>
+                  <span className="flex items-center gap-1.5"><span className="text-accent-cyan">⚡</span> Performance Máxima</span>
+                  <span className="text-white/20 hidden sm:inline">•</span>
+                  <span className="flex items-center gap-1.5"><span className="text-amber-400">💎</span> Design Premium</span>
+                  <span className="text-white/20 hidden sm:inline">•</span>
+                  <span className="flex items-center gap-1.5"><span className="text-purple-400">⚙️</span> Soluções Inteligentes</span>
+                </motion.div>
               </div>
 
               {/* Mobile Carousel (Horizontal Swipe) */}
-              <div className="md:hidden flex gap-6 w-full px-4 mb-8 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pb-4">
+              <div className="md:hidden flex gap-5 w-full px-4 mb-4 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pb-4">
                 {projects.map((project, idx) => (
-                  <div key={`mobile-${project.id}`} className="relative w-[92vw] flex-shrink-0 aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 bg-[#020F22]/50 backdrop-blur-xl snap-center">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      priority={idx < 2}
-                      className="object-cover pointer-events-none"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/40 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-8 w-full">
-                      <p className="text-accent-cyan text-[10px] font-bold tracking-widest mb-2 uppercase">
-                        {project.category}
-                      </p>
-                      <h2 className="text-2xl font-bold text-white mb-6 drop-shadow-md">
-                        {project.title}
-                      </h2>
-                      <Link
-                        href={`/portfolio/${project.slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#020F22] text-xs font-bold rounded-lg shadow-lg"
-                      >
-                        Ver projeto
-                        <FiLayout />
-                      </Link>
+                  <div 
+                    key={`mobile-${project.id}`} 
+                    className="relative w-[85vw] flex-shrink-0 flex flex-col rounded-[24px] overflow-hidden border border-white/10 bg-[#020c1b]/80 backdrop-blur-xl snap-center shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+                  >
+                    {/* Top image */}
+                    <div className="relative w-full h-[180px] overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        priority={idx < 2}
+                        className="object-cover pointer-events-none"
+                        style={{ transform: `scale(${project.scale || 1})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#020c1b] via-[#020c1b]/30 to-transparent" />
+                    </div>
+
+                    {/* Bottom content details */}
+                    <div className="p-6 flex flex-col justify-between flex-grow gap-4">
+                      <div>
+                        {/* Badges */}
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="text-[8px] font-bold text-accent-cyan tracking-wider uppercase bg-accent-cyan/10 px-2 py-0.5 rounded-md">
+                            {project.category}
+                          </span>
+                          <span className="text-[8px] font-medium text-white/40 tracking-wider uppercase">
+                            • {project.segment}
+                          </span>
+                        </div>
+
+                        {/* Title & Solution */}
+                        <h3 className="text-lg font-bold text-white mb-0.5 tracking-tight">
+                          {project.title}
+                        </h3>
+                        <p className="text-[11px] text-white/50 font-light mb-4">
+                          {project.solution}
+                        </p>
+
+                        {/* Features Checklist */}
+                        <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 mb-2">
+                          {project.features?.map((feat, i) => (
+                            <div key={i} className="flex items-center gap-1 text-[9px] text-white/70">
+                              <span className="text-accent-cyan font-bold">✓</span>
+                              <span className="font-light truncate">{feat}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        {/* Result box */}
+                        <div className="p-3 rounded-xl bg-white/[0.01] border border-white/5 mb-4">
+                          <p className="text-[8px] font-bold uppercase tracking-widest text-white/30 mb-0.5">
+                            Resultado Obtido
+                          </p>
+                          <span className="text-xs font-bold text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">
+                            {project.result}
+                          </span>
+                        </div>
+
+                        {/* Button */}
+                        <Link
+                          href={`/portfolio/${project.slug}`}
+                          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-[#020F22] text-xs font-bold rounded-xl active:scale-[0.98] transition-transform"
+                        >
+                          {project.ctaText}
+                          <span className="text-sm">→</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -200,7 +277,7 @@ export default function Showcase() {
               </div>
 
               {/* Desktop Carousel (Stacked) */}
-              <div className="hidden md:flex relative w-full max-w-[1600px] h-[350px] xl:h-[650px] items-center justify-center mb-0 overflow-hidden">
+              <div className="hidden md:flex relative w-full max-w-[1500px] h-[360px] lg:h-[460px] xl:h-[550px] items-center justify-center mb-4 overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false}>
                   {[-1, 0, 1].map((offset) => {
                     const index = (currentIndex + offset + projects.length) % projects.length;
@@ -212,40 +289,89 @@ export default function Showcase() {
                         key={`${project.id}-${offset}`}
                         initial={{ opacity: 0, scale: 0.8, x: offset * 300 }}
                         animate={{ 
-                          opacity: isCenter ? 1 : 0.4, 
-                          scale: isCenter ? 1.1 : 0.85, 
-                          x: offset * (isLargeScreen ? 480 : 250),
+                          opacity: isCenter ? 1 : 0.35, 
+                          scale: isCenter ? 1.05 : 0.85, 
+                          x: offset * (isLargeScreen ? 500 : 340),
                           zIndex: isCenter ? 30 : 10,
-                          filter: isCenter ? "blur(0px)" : "blur(4px)"
+                          filter: isCenter ? "blur(0px)" : "blur(5px)"
                         }}
                         exit={{ opacity: 0, scale: 0.5, x: offset * 800 }}
-                        transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                        className="absolute w-[400px] h-[250px] xl:w-[800px] xl:h-[480px] rounded-[24px] xl:rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism"
+                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className={`absolute w-[420px] h-[260px] lg:w-[680px] lg:h-[340px] xl:w-[920px] xl:h-[410px] rounded-[24px] xl:rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.5)] cursor-pointer group glass-morphism transition-colors duration-500 ${isCenter ? "border-accent-cyan/30 shadow-[0_0_60px_rgba(0,242,255,0.15)]" : ""}`}
                         onClick={() => isCenter ? null : offset > 0 ? nextProject() : prevProject()}
                       >
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className={`object-cover transition-transform duration-700 ${isCenter ? "group-hover:scale-110" : ""}`}
-                          style={{ transform: `scale(${project.scale || 1})` }}
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent transition-opacity ${isCenter ? "opacity-100" : "opacity-40"}`} />
-                        
-                        {isCenter && (
-                          <div className="absolute inset-0 border-2 border-accent-cyan/30 rounded-[40px] pointer-events-none shadow-[inset_0_0_80px_rgba(0,242,255,0.15)]" />
-                        )}
+                        <div className={`w-full h-full relative ${isCenter ? "grid grid-cols-[58%_42%]" : "block"}`}>
+                          
+                          {/* Left / Full visual side */}
+                          <div className="relative w-full h-full overflow-hidden">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className={`object-cover transition-transform duration-700 ${isCenter ? "group-hover:scale-105" : ""}`}
+                              style={{ transform: `scale(${project.scale || 1})` }}
+                            />
+                            {/* Inner shadows/gradients to blend beautifully */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#020F22]/20 to-[#020F22]/95" />
+                          </div>
 
-                        <div className={`absolute bottom-0 left-0 p-6 xl:p-12 w-full transition-all duration-500 ${isCenter ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                          <p className="text-accent-cyan text-[8px] xl:text-xs font-bold tracking-[0.3em] mb-2 xl:mb-4 uppercase">{project.category}</p>
-                          <h3 className="text-xl xl:text-5xl font-bold text-white mb-4 xl:mb-8 tracking-tight">{project.title}</h3>
-                          <Link
-                            href={`/portfolio/${project.slug}`}
-                            className="inline-flex items-center gap-2 px-6 py-3 xl:px-8 xl:py-4 bg-white text-[#020F22] text-xs xl:text-base font-bold rounded-xl hover:bg-accent-cyan transition-colors"
-                          >
-                            Ver projeto completo
-                            <FiLayout />
-                          </Link>
+                          {/* Right side Details (only active project) */}
+                          {isCenter && (
+                            <div className="flex flex-col justify-between p-4 lg:p-6 xl:p-8 bg-[#020c1b]/95 border-l border-white/5 h-full relative z-20">
+                              <div>
+                                {/* Category and Segment */}
+                                <div className="flex flex-wrap items-center gap-1.5 mb-1.5 lg:mb-2.5">
+                                  <span className="text-[8px] xl:text-[9px] font-bold text-accent-cyan tracking-wider uppercase bg-accent-cyan/10 px-2 py-0.5 rounded-md">
+                                    {project.category}
+                                  </span>
+                                  <span className="text-[8px] xl:text-[9px] font-medium text-white/40 tracking-wider uppercase">
+                                    • {project.segment}
+                                  </span>
+                                </div>
+
+                                {/* Title & Solution */}
+                                <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-white mb-0.5 tracking-tight">
+                                  {project.title}
+                                </h3>
+                                <p className="text-[11px] xl:text-xs text-white/60 font-light mb-3 lg:mb-4">
+                                  {project.solution}
+                                </p>
+
+                                {/* Features Checklist */}
+                                <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-3">
+                                  {project.features?.map((feat, i) => (
+                                    <div key={i} className="flex items-center gap-1.5 text-[9px] xl:text-[10px] text-white/80">
+                                      <span className="text-accent-cyan font-bold">✓</span>
+                                      <span className="font-light truncate">{feat}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              <div>
+                                {/* Growth Metric / Result */}
+                                <div className="p-2.5 xl:p-3 rounded-2xl bg-white/[0.02] border border-white/5 mb-3 transition-all duration-300">
+                                  <p className="text-[8px] xl:text-[9px] font-bold uppercase tracking-widest text-white/40 mb-0.5 flex items-center gap-1">
+                                    <FiTrendingUp className="text-emerald-400" /> Resultado de Negócio
+                                  </p>
+                                  <div className="flex items-center gap-1.5">
+                                    <span className="text-xs lg:text-sm xl:text-base font-bold text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.2)]">
+                                      {project.result}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* Button */}
+                                <Link
+                                  href={`/portfolio/${project.slug}`}
+                                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 xl:px-5 xl:py-3 bg-white text-[#020F22] hover:bg-accent-cyan hover:shadow-[0_0_20px_rgba(0,242,255,0.4)] text-[11px] xl:text-xs font-bold rounded-xl transition-all duration-300"
+                                >
+                                  {project.ctaText}
+                                  <span className="text-xs">→</span>
+                                </Link>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     );
@@ -253,7 +379,7 @@ export default function Showcase() {
                 </AnimatePresence>
 
                 {/* Desktop Navigation Arrows */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-20 pointer-events-none z-50">
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-10 lg:px-20 pointer-events-none z-50">
                   <button onClick={prevProject} className="p-6 rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-white hover:bg-white/10 hover:border-accent-cyan transition-all pointer-events-auto backdrop-blur-xl group">
                     <FiChevronLeft size={32} className="group-hover:-translate-x-1 transition-transform" />
                   </button>
@@ -286,7 +412,7 @@ export default function Showcase() {
                   transition={{ delay: 0.3 }}
                   className="px-10 py-4 rounded-xl bg-gradient-to-r from-[#0363F8] to-[#20A2F8] text-white font-bold shadow-[0_0_15px_rgba(3,99,248,0.3)] hover:shadow-[0_0_25px_rgba(3,99,248,0.5)] transition-all flex items-center gap-2 hover:scale-105"
                 >
-                  Ver resultados
+                  Ver Portfólio Completo
                   <span className="text-xl">→</span>
                 </motion.button>
               </div>
@@ -356,22 +482,30 @@ export default function Showcase() {
                   >
                     <Link
                       href={`/portfolio/${project.slug}`}
-                      className="relative aspect-[16/10] rounded-[32px] overflow-hidden border border-white/10 group cursor-pointer glass-morphism shadow-2xl block"
+                      className="relative aspect-[16/10] rounded-[24px] md:rounded-[32px] overflow-hidden border border-white/10 group cursor-pointer glass-morphism shadow-2xl block"
                     >
                       <Image 
                         src={project.image} 
                         alt={project.title} 
                         fill 
-                        className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" 
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-50 group-hover:opacity-75" 
                         style={{ transform: `scale(${project.scale || 1})` }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-transparent to-transparent p-10 flex flex-col justify-between">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-[10px] font-bold text-accent-cyan uppercase tracking-tighter w-fit h-fit backdrop-blur-md">
-                          {project.category}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#020F22] via-[#020F22]/20 to-transparent p-6 md:p-8 flex flex-col justify-between">
+                        <div className="flex justify-between items-start w-full">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-accent-cyan/10 border border-accent-cyan/30 text-[9px] font-bold text-accent-cyan uppercase tracking-wider backdrop-blur-md">
+                            {project.category}
+                          </span>
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-bold text-emerald-400 uppercase tracking-wider backdrop-blur-md">
+                            {project.result}
+                          </span>
                         </div>
-                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">{project.title}</h3>
+                        <div>
+                          <p className="text-[9px] md:text-[10px] text-white/40 font-medium uppercase tracking-wider mb-0.5">{project.segment}</p>
+                          <h3 className="text-lg md:text-2xl font-bold text-white drop-shadow-lg leading-tight">{project.title}</h3>
+                        </div>
                       </div>
-                      <div className="absolute inset-0 border-2 border-accent-cyan/0 group-hover:border-accent-cyan/20 rounded-[32px] transition-all duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 border-2 border-accent-cyan/0 group-hover:border-accent-cyan/20 rounded-[24px] md:rounded-[32px] transition-all duration-500 pointer-events-none" />
                     </Link>
                   </motion.div>
                 ))}

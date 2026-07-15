@@ -110,7 +110,7 @@ export default function AetherHub() {
   ];
 
   return (
-    <section id="aether-hub" className="relative py-12 px-4 md:px-8 bg-[#020F22] overflow-hidden">
+    <section id="aether-hub" className="relative py-10 px-4 md:px-8 bg-[#020F22] overflow-hidden">
       {/* 1. Subtle High-Tech Grid Over the Whole Section (Desktop only to prevent mobile GPU lag) */}
       <div className="hidden lg:block absolute inset-0 bg-[linear-gradient(to_right,rgba(0,242,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,242,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
 
@@ -142,7 +142,7 @@ export default function AetherHub() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={cardVariants}
-            className="relative rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#031127]/95 via-[#051C3E]/90 to-[#010915]/98 border border-white/10 p-6 md:p-10 lg:p-14 overflow-hidden shadow-[0_0_30px_rgba(3,99,248,0.1)] lg:shadow-[0_0_80px_rgba(3,99,248,0.15)] group-hover:border-accent-cyan/20 transition-colors duration-700 will-change-transform"
+            className="relative rounded-[32px] md:rounded-[40px] bg-gradient-to-br from-[#031127]/95 via-[#051C3E]/90 to-[#010915]/98 border border-white/10 p-6 md:p-8 lg:p-10 xl:p-12 overflow-hidden shadow-[0_0_30px_rgba(3,99,248,0.1)] lg:shadow-[0_0_80px_rgba(3,99,248,0.15)] group-hover:border-accent-cyan/20 transition-colors duration-700 will-change-transform"
           >
             {/* Subtle grid background inside the card */}
             <div className="absolute inset-0 opacity-[0.07] pointer-events-none" 
@@ -152,13 +152,13 @@ export default function AetherHub() {
               }} 
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 relative z-10 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 relative z-10 items-center">
               {/* Left Content (Grid: 5 columns) */}
               <div className="lg:col-span-5 flex flex-col items-start">
                 {/* Badge */}
                 <motion.div 
                   variants={itemLeftVariants}
-                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-[10px] md:text-xs font-bold tracking-[0.25em] text-accent-cyan uppercase mb-6"
+                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-[9px] md:text-xs font-bold tracking-[0.25em] text-accent-cyan uppercase mb-4"
                 >
                   <FiLayers className="text-xs md:text-sm" /> ECOSSISTEMA ADISEA
                 </motion.div>
@@ -166,7 +166,7 @@ export default function AetherHub() {
                 {/* Heading */}
                 <motion.h2 
                   variants={itemUpVariants}
-                  className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6"
+                  className="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight mb-4"
                 >
                   Conheça os <span className="bg-gradient-to-r from-accent-cyan via-[#00d1ff] to-[#0363F8] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,242,255,0.2)]">nossos produtos</span>
                 </motion.h2>
@@ -174,20 +174,20 @@ export default function AetherHub() {
                 {/* Subheading */}
                 <motion.p 
                   variants={itemUpVariants}
-                  className="text-white/70 text-sm md:text-lg font-light leading-relaxed max-w-xl mb-8"
+                  className="text-white/70 text-xs md:text-sm lg:text-base font-light leading-relaxed max-w-xl mb-6"
                 >
                   A plataforma completa com todos os nossos produtos, ferramentas e soluções de IA para impulsionar o seu negócio.
                 </motion.p>
 
                 {/* Checkbox list */}
-                <ul className="flex flex-col gap-4 mb-10 w-full">
+                <ul className="flex flex-col gap-3.5 mb-6 w-full">
                   {checkItems.map((item, idx) => (
                     <motion.li 
                       key={idx}
                       variants={itemLeftVariants}
-                      className="flex items-center gap-3.5 text-white/90 text-sm md:text-base font-light"
+                      className="flex items-center gap-3 text-white/90 text-xs md:text-sm font-light"
                     >
-                      <FiCheckCircle className="text-accent-cyan w-5 h-5 flex-shrink-0 lg:drop-shadow-[0_0_8px_rgba(0,242,255,0.5)] drop-shadow-none" />
+                      <FiCheckCircle className="text-accent-cyan w-4 h-4 md:w-5 md:h-5 flex-shrink-0 lg:drop-shadow-[0_0_8px_rgba(0,242,255,0.5)] drop-shadow-none" />
                       <span>{item}</span>
                     </motion.li>
                   ))}
@@ -196,18 +196,18 @@ export default function AetherHub() {
                 {/* Action CTA Button (Desktop only) */}
                 <motion.div
                   variants={itemUpVariants}
-                  className="hidden lg:flex items-center gap-6"
+                  className="hidden lg:flex items-center gap-5"
                 >
                   <a
                     href="https://hub.adisea.com.br"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm md:text-base shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group flex-shrink-0"
+                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-xs md:text-sm shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group flex-shrink-0"
                   >
                     Acessar Adisea Hub
-                    <span className="text-lg transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                    <span className="text-base transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </a>
-                  <span className="text-xs text-white/50 font-light leading-relaxed max-w-[200px]">
+                  <span className="text-[11px] text-white/50 font-light leading-relaxed max-w-[200px]">
                     Explore nossa vitrine de produtos, agentes de IA e soluções prontas para compra.
                   </span>
                 </motion.div>
@@ -224,13 +224,13 @@ export default function AetherHub() {
                 <motion.div
                   variants={tabletVariants}
                   custom={isMobile}
-                  className="relative w-[340px] h-[240px] sm:w-[500px] sm:h-[350px] md:w-[600px] md:h-[420px] lg:w-[640px] lg:h-[440px] xl:w-[740px] xl:h-[510px] cursor-pointer z-10 hover:scale-100 lg:hover:scale-105 transition-transform duration-500 ease-out will-change-transform"
+                  className="relative w-[300px] h-[200px] sm:w-[420px] sm:h-[290px] md:w-[500px] md:h-[350px] lg:w-[520px] lg:h-[360px] xl:w-[620px] xl:h-[420px] cursor-pointer z-10 hover:scale-100 lg:hover:scale-105 transition-transform duration-500 ease-out will-change-transform"
                 >
                   <Image
                     src="/images/aether-hub-dashboard-v3.png"
                     alt="Adisea Hub Dashboard"
                     fill
-                    sizes="(max-width: 640px) 340px, (max-width: 768px) 500px, (max-width: 1024px) 600px, (max-width: 1280px) 640px, 740px"
+                    sizes="(max-width: 640px) 300px, (max-width: 768px) 420px, (max-width: 1024px) 500px, (max-width: 1280px) 520px, 620px"
                     priority
                     className="object-contain"
                     unoptimized
@@ -240,18 +240,18 @@ export default function AetherHub() {
                 {/* Action CTA Button (Mobile only) */}
                 <motion.div
                   variants={itemUpVariants}
-                  className="mt-8 lg:hidden z-20 flex flex-col items-center gap-3"
+                  className="mt-6 lg:hidden z-20 flex flex-col items-center gap-2.5"
                 >
                   <a
                     href="https://hub.adisea.com.br"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-sm shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group"
+                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-accent-cyan text-[#020F22] font-bold text-xs shadow-[0_0_25px_rgba(0,242,255,0.3)] hover:shadow-[0_0_35px_rgba(0,242,255,0.6)] hover:scale-100 lg:hover:scale-105 transition-transform duration-300 group"
                   >
                     Acessar Adisea Hub
-                    <span className="text-lg transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                    <span className="text-base transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                   </a>
-                  <span className="text-[11px] text-white/50 font-light text-center max-w-[260px]">
+                  <span className="text-[10px] text-white/50 font-light text-center max-w-[260px]">
                     Explore nossa vitrine de produtos, agentes de IA e soluções prontas para compra.
                   </span>
                 </motion.div>
@@ -266,15 +266,15 @@ export default function AetherHub() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={benefitsContainerVariants}
-          className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 justify-items-center"
+          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 justify-items-center"
         >
           {bottomBenefits.map((benefit, idx) => (
             <motion.div 
               key={idx}
               variants={benefitItemVariants}
-              className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left group"
+              className="flex flex-col sm:flex-row items-center gap-2.5 text-center sm:text-left group"
             >
-              <div className="p-3 rounded-lg bg-accent-cyan/5 border border-accent-cyan/10 group-hover:border-accent-cyan/30 group-hover:bg-accent-cyan/10 transition-[border-color,background-color] duration-300">
+              <div className="p-2.5 rounded-lg bg-accent-cyan/5 border border-accent-cyan/10 group-hover:border-accent-cyan/30 group-hover:bg-accent-cyan/10 transition-[border-color,background-color] duration-300">
                 {benefit.icon}
               </div>
               <span className="text-white/60 text-xs md:text-sm font-medium tracking-wide group-hover:text-white transition-colors duration-300">

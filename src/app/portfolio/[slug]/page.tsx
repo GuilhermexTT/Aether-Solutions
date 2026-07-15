@@ -72,6 +72,22 @@ const projectData = {
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486049/Captura_de_tela_2026-05-22_183504_ski7u7.png", span: "row-span-1" },
       { type: "image", url: "https://res.cloudinary.com/drsv0whjm/image/upload/v1779486050/Captura_de_tela_2026-05-22_183538_x5mub9.png", span: "row-span-1" }
     ]
+  },
+  "aetherhub": {
+    title: "AetherHub BI",
+    category: "Dashboard & BI",
+    description: "Plataforma avançada de business intelligence e gestão de vendas desenvolvida para consolidar dados e acompanhar métricas operacionais cruciais em tempo real.",
+    client: "Projeto Interno",
+    year: "2026",
+    liveUrl: "",
+    buttonText: "",
+    services: ["Desenvolvimento Front-end", "BI & Analytics", "Integração SaaS"],
+    gallery: [
+      { type: "image", url: "/images/aether-hub-dashboard-v3.png", span: "md:col-span-2 md:row-span-2" },
+      { type: "image", url: "/images/aether-hub-bg.png", span: "row-span-1" },
+      { type: "image", url: "/images/showcase/saas.png", span: "row-span-1" },
+      { type: "image", url: "/images/showcase/portfolio.png", span: "md:col-span-3 row-span-1", aspect: "aspect-[19/3] md:aspect-[19/3]" }
+    ]
   }
 };
 export default function ProjectPage() {
